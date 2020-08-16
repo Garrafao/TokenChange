@@ -11,6 +11,7 @@ count.py
 
 To use the BERT methods of this repository, the torch package and the transformers package need to be installed, this can be done by using the following commands: 
 
+
 pip install torch --user
 pip install transformers --user
 
