@@ -1,5 +1,10 @@
 # TokenChange
 
+Necessary data (in the Data folder):
+
+ccoha2 corpus 
+Pretrained word2vec model
+
 
 The following files are used from https://github.com/Garrafao/LSCDetection:
 
