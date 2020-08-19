@@ -98,7 +98,7 @@ The scripts creates the vectors for sentences of two times and clusters them and
 
 ### Example Bert:
 ```python
-ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/labels.csv lemma gaac 0 Storage/SecondOrder/lsc.csv 0.2 0.02 10
+ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/labels.csv lemma gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10
 
 
 ```
