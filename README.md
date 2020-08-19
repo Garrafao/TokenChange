@@ -91,13 +91,12 @@ ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/m
 
 
 ## Example Lexical semantic change detection
-
+The scripts creates the vectors for sentences of two times and clusters them and then automatically saves the semtantic change scores in a file. 
 
 ### Example count based:
 ### Example word2vec: 
 
 ### Example Bert:
-The script creates the vectors for sentences of two times and clusters them and then automatically saves the semtantic change scores in a file. 
 ```python
 ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/labels.csv lemma gaac 0 Storage/SecondOrder/lsc.csv 0.2 0.02 10
 
