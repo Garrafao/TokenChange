@@ -54,7 +54,8 @@ ipython WordSenseClustering/CountBasedVectors.py Storage/FirstOrder/Vectors.npz 
 ```
 3) Cluster the vectors and compare it to the epected clusterin 
 ```python 
-ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2
+ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+
 ```
 
 
@@ -70,7 +71,8 @@ ipython WordSenseClustering/W2v.py Data/monetary.csv Storage/FirstOrder/w2i.npz.
 ```
 3) Cluster the vectors and compare it to the epected clusterin
 ```python
-ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2
+ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+
 ```
 
 
@@ -83,13 +85,24 @@ ipython WordSenseClustering/Bert.py Data/monetary.csv Storage/SecondOrder/Vector
 ```
 2)Cluster the vectors and compare it to the epected clusterin 
 ```python
-ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2
+ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+
 ```
 
 
+## Example Lexical semantic change detection
 
 
+### Example count based:
+### Example word2vec: 
 
+### Example Bert:
+The script creates the vectors for sentences of two times and clusters them and then automatically saves the semtantic change scores in a file. 
+```python
+ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/labels.csv lemma gaac 0 Storage/SecondOrder/lsc.csv 0.2 0.02 10
+
+
+```
 
 
 
