@@ -92,15 +92,15 @@ The scripts creates the vectors for sentences of two times and clusters them and
 
 ### Example count based:
 ```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/labels.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 20 Storage/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
+ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 20 Storage/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
 ```
 ### Example word2vec: 
 ```python
-ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/labels.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz
+ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz
 ```
 ### Example Bert:
 ```python
-ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/labels.csv lemma gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10
+ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv lemma gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10
 ```
 
 
