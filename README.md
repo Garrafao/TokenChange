@@ -1,15 +1,6 @@
 # TokenChange
 
 
-## Necessary files
-
-Create 3 empty csv files and put it into the folder Storage/SecondOrder:
-
-cluster.csv   --> In this file all cluster precision scores will be stored
-
-lables.csv    --> In this file clustering labels will be stored 
-
-lsc.csv       --> In this file all the semantic change score will be stored
 
 ## Necessary data (store it in the Data folder):
 
