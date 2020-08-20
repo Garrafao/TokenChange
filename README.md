@@ -18,6 +18,8 @@ The repository conatins the folders:
 
 1. WordSenseClustering: Contains several python scripts for creating token vectors and apllying word sense clustering. 
 2. SemanticChangeDetection: Contains several python scripts for measuring the sematnic change of words/tokens.
+
+All scripts can be run directly from the command line, but they include several parameters. All needed parameters can be found in the file itself. 
 ## Necessary data (store it in the Data folder):
 
 Corpus (In the example I used ccoha2)
