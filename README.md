@@ -1,5 +1,6 @@
 # TokenChange
 
+
 ## Necessary files
 
 Create 3 empty csv files and put it into the folder Storage/SecondOrder:
@@ -27,6 +28,11 @@ svd.py
 ppmi.py 
 
 count.py 
+
+They will be used, after running the import script: 
+```python 
+ipython import.py
+```
 
 ## Installations
 
