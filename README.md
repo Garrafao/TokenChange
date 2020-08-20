@@ -2,11 +2,11 @@
 
 
 
-## Necessary data (store it in the Data folder):
+1. Necessary data (store it in the Data folder):
 
 Corpus (In the example I used ccoha2)
 
-Pretrained word2vec model
+Pretrained word2vec vectors: Can be downloaded here: https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit
 
 ## Used packages
 
