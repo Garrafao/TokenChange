@@ -1,6 +1,23 @@
 # TokenChange
 
-{:toc}
+## Contents
+
+This repository contains several methods for:
+
+1. Creating contextualized token vectors 
+2. Clustering token vectors into senses
+3. Analysing the sematic change of words/tokens 
+
+Based on: 
+
+1. Count based vectors 
+2. Pretrained word vetors from Google´s word2vec 
+3. Token embeddings created by BERT
+
+The repository conatins the folders: 
+
+1. WordSenseClustering: Contains several python scripts for creating token vectors and apllying word sense clustering. 
+2. SemanticChangeDetection: Contains several python scripts for measuring the sematnic change of words/tokens.
 ## Necessary data (store it in the Data folder):
 
 Corpus (In the example I used ccoha2)
@@ -33,6 +50,7 @@ pip install torch --user
 ```
 pip install transformers --user
 ```
+
 ## Example Word sense clustering
 
 
@@ -102,15 +120,5 @@ ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv S
 ```python
 ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv lemma gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10
 ```
-
-
-
-
-
-
-
-
-
-
 
 
