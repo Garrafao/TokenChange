@@ -1,8 +1,7 @@
 # TokenChange
 
-
-
-1. Necessary data (store it in the Data folder):
+{:toc}
+## Necessary data (store it in the Data folder):
 
 Corpus (In the example I used ccoha2)
 
