@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
+
 
 
 #!/usr/bin/env python
 # coding: utf-8
+import os 
+
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -34,14 +36,16 @@ def main():
     args = docopt("""
 
     Usage:
-        count.py  <pathVectors> <pathTestSentences> <initializationType> <numberClusters> 
+        count.py  <pathVectors> <pathTestSentences> <initializationType> <numberClusters> <outPathLabels> <outPathResults>
         
     Arguments:
        
         <pathVectors> = Path to the vectors
-        <pathTestSentences> = Path to the test sentecens that contain the gold clustering
+        <pathTestSentences> = Path to the test sentecens that contain the gold clustering, if no accuracy is needed set to 0
         <initializationType> = "gaac" for precalculated initialization, else random
         <numberClusters> = Number of desired clusters, if 0 than its calculated by sillhouette
+        <outPathLabels> = Path to store the labels
+        <outPathResults> = path to store the accuracy in, if no accuracy is needed set to 0 
     
     """)
     
@@ -49,25 +53,29 @@ def main():
     pathTestSentences = args['<pathTestSentences>']
     initializationType = args['<initializationType>']
     numberClusters = int(args['<numberClusters>'])
+    outPathLabels = args['<outPathLabels>']
+    outPathResults = args['<outPathResults>']
     
-    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-    start_time = time.time()    
-    
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
+    print("")
+    start_time = time.time()  
+    logging.critical("Clustering start") 
+
     #Load vectors
-    logging.info("Load vectors") 
     inSpace = Space(path=pathVectors)
     loaded_contextVectorList_sparse=inSpace.matrix
 
-    #Get gold clustering
-    logging.info("Get gold clustering") 
-    testSentences=[]
-    gold=[]
-    with open(pathTestSentences, 'r') as csvFile:
-        reader = csv.DictReader(csvFile, delimiter="\t")
-        for row in reader:
-            testSentences.append(dict(row))   
-    for dic in testSentences:
-            gold.append(int(dic['cluster']))
+    
+    if pathTestSentences != "0":
+	#Get gold clustering if exists
+        testSentences=[]
+        gold=[]
+        with open(pathTestSentences, 'r') as csvFile:
+            reader = csv.DictReader(csvFile, delimiter="\t")
+            for row in reader:
+                testSentences.append(dict(row))   
+        for dic in testSentences:
+                gold.append(int(dic['cluster']))
             
     if numberClusters == 0:
         #Calculate silhouette score for eaach number of clusters
@@ -88,7 +96,6 @@ def main():
     if initializationType == "gaac":
 
         #Calculate GAAC on sample vectors for initial centroids
-        logging.info("Calculate GAAC on sample vectors for initial centroids")
         testList=[]
         size = min(len(loaded_contextVectorList_sparse.toarray()), 50 )
         randoms=random.sample(range(0, len(loaded_contextVectorList_sparse.toarray())), size)
@@ -96,27 +103,48 @@ def main():
             testList.append(loaded_contextVectorList_sparse[i].toarray()[0])   
         initialCentroids=preprocessing.normalize(gaac(testList, maxIndex), norm='l2')
 
-        #Calculate kmeans 
-        logging.info("Calculate kmeans")    
+        #Calculate kmeans    
         centroid, label = kmeans2(loaded_contextVectorList_sparse.toarray(),
                                                         initialCentroids , 5, minit='matrix')
 
     else:
-        #Calculate kmeans 
-        logging.info("Calculate kmeans")    
+        #Calculate kmeans    
         centroid, label = kmeans2(loaded_contextVectorList_sparse.toarray(),
                                                         maxIndex , 5, minit='points')
-        
-        
-    #Show results 
-    logging.info("Show results")
-    print("Adjusted rand index:")
-    print(adjusted_rand_score(gold, label))
-    print("Accuracy:")
-    print(cluster_accuracy(np.array(gold), np.array(label)))
-    plotClusters(loaded_contextVectorList_sparse.toarray(), gold, label)                                  
+    
 
-    logging.info("--- %s seconds ---" % (time.time() - start_time))
+
+    if outPathResults != "0":
+        filename = os.path.splitext(os.path.basename(pathTestSentences))[0]
+
+        ADJ=[filename, "ADJ", (round(adjusted_rand_score(gold, label),3)) ]
+        ACC=[filename, "ACC", cluster_accuracy(np.array(gold), np.array(label)) ]  
+  
+        with open(outPathResults, 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerows([ADJ, ACC])    
+
+
+    
+        
+        #Show results 
+        print("")
+        print(filename)
+        print("")
+        print("Adjusted rand index:")
+        print(round(adjusted_rand_score(gold, label),3))
+        print("Accuracy:")
+        print(cluster_accuracy(np.array(gold), np.array(label)))
+        print("")
+        #plotClusters(loaded_contextVectorList_sparse.toarray(), gold, label)                                  
+
+    #Save labels
+    with open(outPathLabels, 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows([label])    
+    logging.critical("Clustering end")  		
+    logging.critical("--- %s seconds ---" % (time.time() - start_time))
+    print("")
     
     
     
@@ -229,40 +257,5 @@ def plotClusters(toCluster, gold, actual):
 
 if __name__ == '__main__':
     main()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
 
 

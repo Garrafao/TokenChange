@@ -42,8 +42,11 @@ def main():
     outPathw2i = args['<outPathw2i>']
 
     
-    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
+    print("")
     start_time = time.time()    
+    logging.critical("WordVectors start")
+
     
     #Create w2i
     logging.info("Create w2i")
@@ -66,7 +69,6 @@ def main():
 
     #Calculate IDF for every word 
     docFreq={}
-    logging.info("Calculate IDF for every word ")
     for i in range(0, len(w2i)):
         docFreq[i]=0
     with gzip.open(pathCorpus,'rt', encoding="utf-8") as sentences: 
@@ -84,41 +86,28 @@ def main():
 
 
     #Create co-occurence matrix
-    logging.info("Create co-occurence matrix")             
+    logging.critical("Create co-occurence matrix")             
     get_ipython().run_line_magic('run', 'count.py --len Data/ccoha2.txt.gz outPathVectors 20')
     
     if representation == "ppmi":
-        #Apply PPMI
-        logging.info("Apply PPMI")         
+        #Apply PPMI        
         get_ipython().run_line_magic('run', 'ppmi.py --len outPathVectors outPathVectors 1 1')
     
     if representation == "svd":
-        #Apply PPMI
-        logging.info("Apply PPMI") 
+        #Apply PPMI 
         get_ipython().run_line_magic('run', 'ppmi.py --len outPathVectors outPathVectors 1 1')
         #Apply SVD
-        logging.info("Apply SVD") 
         get_ipython().run_line_magic('run', 'svd.py --len outPathVectors outPathVectors 100 0')
         
 
     #Save w2i
-    logging.info("Save w2i")
     np.save(outPathw2i , w2i)
 
+    logging.critical("WordVectors end")  		
+    logging.critical("--- %s seconds ---" % (time.time() - start_time))
+    print("")
 
         
 if __name__ == '__main__':
     main()
-
-
-# In[33]:
-
-
-
-
-
-# In[ ]:
-
-
-
 

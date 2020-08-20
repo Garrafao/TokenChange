@@ -42,7 +42,7 @@ def main():
         <pathTestSentences> = Path to the test sentences
         <pathw2i> = <pathw2i>
         <outPathVectors> = Path for storing the vectors 
-        <windowSize2> = Window size
+        <windowSize2> = Window size (20 works fine)
         <pathCorpus> = path to the corpus 
     
     """)
@@ -54,21 +54,20 @@ def main():
     windowSize2 = int(args['<windowSize2>'])
     pathCorpus = args['<pathCorpus>']
 
-    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
+    print("")
     start_time = time.time()    
+    logging.critical("ContextVectors start")
     
     #Load w2i
-    logging.info("Load w2i")
     w2i = np.load(pathw2i, allow_pickle='TRUE').item()
 
     #Load saved wordVectorMatrix
-    logging.info("Load saved wordVectorMatrix") 
     inSpace = Space(path=pathMatrix)
     cooc_mat_sparse=inSpace.matrix    
       
     #Calculate IDF for every word 
     docFreq={}
-    logging.info("Calculate IDF for every word ")
     for i in range(0, len(w2i)):
         docFreq[i]=0
     with gzip.open(pathCorpus,'rt', encoding="utf-8") as sentences: 
@@ -85,7 +84,6 @@ def main():
             docFreq[value] = math.log10(count/max(docFreq[value],1)) 
 
     #Load TestSentences 
-    logging.info("Load TestSentences and calculate contextVectorMatrix")
     contextVectorList=[]
     testSentences=[]
     with open(pathTestSentences, 'r') as csvFile:
@@ -94,7 +92,7 @@ def main():
             testSentences.append(dict(row))   
 
     #Calculate contextVectorMatrix
-    logging.info("Calculate contextVectorMatrix")
+    logging.critical("Calculate contextVectorMatrix")
     nonExisting=False
     target=str(testSentences[0]["original_word"])        
     for dic in testSentences:
@@ -117,19 +115,18 @@ def main():
                     contextVectorList.append(getContextVector(toMelt))  
                 else:
                     nonExisting=True
-    if nonExisting:
-        print("WORD UNKNOWN")   
+  
 
     #Normalize vectors in length
-    logging.info("Normalize vectors in length")
     contextVectorList=preprocessing.normalize(contextVectorList, norm='l2')
 
     #Save contextVectorList_sparse matrix
-    logging.info("Save contextVectorList_sparse matrix")
     outSpace = Space(matrix = contextVectorList, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
       
-    logging.info("--- %s seconds ---" % (time.time() - start_time))
+    logging.critical("ContextVectors end")  		
+    logging.critical("--- %s seconds ---" % (time.time() - start_time))
+    print("")
    
 
     

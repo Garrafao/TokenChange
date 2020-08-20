@@ -40,13 +40,14 @@ def main():
     vecType = args['<vecType>']
     
 
-    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
+    print("")
     start_time = time.time()    
+    logging.critical("Bert start")
+ 
     
     
     #Load TestSentences 
-    logging.info("Load TestSentences and calculate contextVectorMatrix")
-
     # Load pre-trained model tokenizer (vocabulary)
     global tokenizer
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
@@ -69,7 +70,8 @@ def main():
         else:
             vecTypeString = "sentence"
 
-        #Create the vectors           
+        #Create the vectors  
+        logging.critical("Create Bert embeddings")         
         for i in range(0, len(testSentences)): 
             #Create target word(s)
             targetWord=str(testSentences[i][vecTypeString].split()[int([testSentences[i]["target_index"]][0])])
@@ -113,15 +115,16 @@ def main():
             contextVectorList.append(np.sum(vectors, axis=0, dtype=float))
             
     #Normalize vectors in length
-    logging.info("Normalize vectors in length")
     contextVectorList=preprocessing.normalize(contextVectorList, norm='l2')
 
     #Save contextVectorList_sparse matrix
-    logging.info("Save contextVectorList_sparse matrix")
     outSpace = Space(matrix = contextVectorList, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
       
-    logging.info("--- %s seconds ---" % (time.time() - start_time))
+    logging.critical("Bert end")  		
+    logging.critical("--- %s seconds ---" % (time.time() - start_time))
+    print("")
+
    
 
     
