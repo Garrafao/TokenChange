@@ -69,7 +69,7 @@ ipython WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/Firs
 ```python 
 ipython WordSenseClustering/CountBasedVectors.py Storage/FirstOrder/Vectors.npz Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
-3) Cluster the vectors and compare it to the epected clusterin 
+3) Cluster the vectors and compare it to the epected clustering 
 ```python 
 ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
 
@@ -86,7 +86,7 @@ ipython WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/Firs
 ```python 
 ipython WordSenseClustering/W2v.py Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
-3) Cluster the vectors and compare it to the epected clusterin
+3) Cluster the vectors and compare it to the epected clustering
 ```python
 ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
 
@@ -108,7 +108,7 @@ ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/m
 
 
 ## Example Lexical semantic change detection
-The scripts creates the vectors for sentences of two times and clusters them and then automatically saves the semtantic change scores in a file. 
+The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semtantic change scores in a file. 
 
 ### Example count based:
 ```python
