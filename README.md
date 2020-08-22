@@ -41,7 +41,7 @@ We recommend you to run the scripts within a [virtual environment](https://pypi.
 
 ## Necessary data (store it in the Data folder):
 
-- Corpus (In the example I used [CCOHA2 from SemEval-2020 Task 1](https://www.ims.uni-stuttgart.de/en/research/resources/corpora/sem-eval-ulscd-eng/)),
+- Corpus (In the example I used [CCOHA2 from SemEval-2020 Task 1](https://www.ims.uni-stuttgart.de/en/research/resources/corpora/sem-eval-ulscd-eng/),
 - Pretrained word2vec vectors: Can be downloaded [here](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit),
 - BERT embeddings will be installed with transformers.
 
