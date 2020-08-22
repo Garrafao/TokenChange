@@ -110,7 +110,7 @@ ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/m
 
 
 
-### Example Bert:
+### Example BERT:
 
 1) Create lemmatized token vectors of sample sentences using Google's BERT
 ```python
