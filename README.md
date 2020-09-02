@@ -23,7 +23,6 @@ The repository conatins the folders:
 
 ## Usage
 
-***Change this***
 
 The scripts should be run directly from the main directory. All scripts can be run directly from the command line:
 
@@ -37,13 +36,13 @@ The usage of each script can be understood by running it with help option `-h`, 
 
 	python WordSenseClustering/Bert.py -h
 
-We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.8.5. Install the required packages running `pip install -r requirements.txt`.
+We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.8.5. 
 
-## Necessary data (store it in the Data folder):
 
-- Corpus (In the example I used [CCOHA2 from SemEval-2020 Task 1](https://www.ims.uni-stuttgart.de/en/research/resources/corpora/sem-eval-ulscd-eng/),
-- Pretrained word2vec vectors: Can be downloaded [here](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit),
-- BERT embeddings will be installed with transformers.
+## Data 
+
+After executing the import.py script the Data folder will contain the lemmatized ccoha2 corpus (https://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/sem-eval-ulscd-eng/), a file that contains test sentences for the pseudoword "monetary/gothic" and the pre trained word vectors from word2vec. (From where?)
+
 
 ## External packages
 
@@ -59,20 +58,16 @@ They will be downloaded, after running the import script:
 ipython import.py
 ```
 
-## Installations
 
-To use the BERT methods of this repository, the torch package and the transformers package need to be installed, this can be done by using the following commands: 
-```
-pip install torch --user
-```
-```
-pip install transformers --user
+After that install the required packages running:
+```python 
+pip install -r requirements.txt
 ```
 
 ## Example Word sense clustering
 
 
-The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering precision will automatically be stored into a file. All methods can be found in the WordSenseClustering folder.
+The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering performance will automatically be stored into a file. All methods can be found in the WordSenseClustering folder.
 
 
 ### Example count based: 
