@@ -1,6 +1,6 @@
 # TokenChange
 
-Repository containing code for [this Master Thesis](#bibtex).
+Repository containing code for [this Bachelor Thesis](#bibtex).
 
 ## Contents
 
@@ -143,8 +143,8 @@ BibTex
 --------
 
 ```
-@mastersthesis{Laicher2020,
-title={{blah blah title blah blah}},
+@bachelorsthesis{Laicher2020,
+title={{Historical word sense clustering with deep contextualized word embeddings}},
 author={Laicher, Severin},
 year={2020},
 school = {Institute for Natural Language Processing, University of Stuttgart},
