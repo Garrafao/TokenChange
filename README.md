@@ -37,7 +37,7 @@ The usage of each script can be understood by running it with help option `-h`, 
 
 	python representations/count.py -h
 
-We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.7.4. Install the required packages running `pip install -r requirements.txt`.
+We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.8.5. Install the required packages running `pip install -r requirements.txt`.
 
 ## Necessary data (store it in the Data folder):
 
