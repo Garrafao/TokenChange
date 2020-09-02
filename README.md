@@ -53,30 +53,10 @@ ipython import.py
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-After that install the required packages running `pip install -r requirements.txt`.
+After that install the required packages running:
+```python 
+pip install -r requirements.txt
+```
 
 ## Example Word sense clustering
 
