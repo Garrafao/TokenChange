@@ -67,7 +67,7 @@ pip install -r requirements.txt
 ## Example Word sense clustering
 
 
-The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering performance will automatically be stored into a file. All methods can be found in the WordSenseClustering folder.
+The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering performance will automatically be stored into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the WordSenseClustering folder.
 
 
 ### Example count based: 
@@ -119,7 +119,7 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 
 ## Example Lexical semantic change detection
-The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores in a file. 
+The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores in a file (`Files/LSC/lsc_scores.csv`). 
 
 ### Example count based:
 ```python
