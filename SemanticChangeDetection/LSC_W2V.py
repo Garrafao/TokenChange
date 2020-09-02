@@ -66,34 +66,18 @@ def main():
     start_time = time.time()    
     logging.critical("W2v LSC start")
     
-    #Create and cluster the vectors of corpora 1
+    #Create the vectors of corpora 1
     logging.critical("Create and cluster the vectors of corpora 1")
     get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences1 $pathToW2i $outPathVectors $windowSize $pathCorpora')
     inSpace = Space(path=outPathVectors)
     vectors1=inSpace.matrix.toarray()
-    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $clusteringInitialization 0 $outPathLabels 0')
-    labels1=[]
-    with open(outPathLabels , 'r') as file:
-        data = file.readlines()  
-    for i in data[-1]:
-        if i != ",":
-            if i != "\n":
-                labels1.append(int(i))    
-   
-    #Create and cluster the vectors of corpora 2
+    
+    #Createthe vectors of corpora 2
     logging.critical("Create and cluster the vectors of corpora 2")    
     get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences2 $pathToW2i $outPathVectors $windowSize $pathCorpora')
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
-    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $clusteringInitialization 0 $outPathLabels 0')
-    labels2=[]
-    with open(outPathLabels , 'r') as file:
-        data = file.readlines() 
-    for i in data[-1]:
-        if i != ",":
-            if i != "\n":
-                labels2.append(int(i))         
-    
+   
     #Create the lists to store the binary results in 
     cosineDistanceBinary=[]
     APDBinary=[]
@@ -157,10 +141,6 @@ def main():
     q = np.histogram(labelA_2)[0] / len(labelA_2) 
  
     dist = distance.jensenshannon(p, q)
-    
-    p = np.histogram(labels1)[0] / len(labels1)
-    q = np.histogram(labels2)[0] / len(labels2)
-    clusterScore = distance.jensenshannon(sorted(p),sorted(q))
     
     print("cosine distance:")
     print(cosineDistance)
