@@ -38,6 +38,12 @@ The usage of each script can be understood by running it with help option `-h`, 
 
 We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.8.5. 
 
+
+## Data 
+
+After executing the import.py script the Data folder will contain the lemmatized ccoha2 corpus (https://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/sem-eval-ulscd-eng/), a file that contains test sentences for the pseudoword "monetary/gothic" and the pre trained word vectors from word2vec. (From where?)
+
+
 ## External packages
 
 The following files are drawn from [LSCDetection](https://github.com/Garrafao/LSCDetection).
