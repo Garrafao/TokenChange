@@ -35,7 +35,7 @@ e.g.
 
 The usage of each script can be understood by running it with help option `-h`, e.g.:
 
-	python representations/count.py -h
+	python WordSenseClustering/Bert.py -h
 
 We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.8.5. Install the required packages running `pip install -r requirements.txt`.
 
