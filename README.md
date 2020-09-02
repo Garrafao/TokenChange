@@ -16,10 +16,10 @@ Based on:
 2. Pretrained word vetors from Google's word2vec 
 3. Token embeddings created by BERT
 
-The repository conatins the folders: 
+The repository conatins  two different types of methods: 
 
-1. WordSenseClustering: Contains several python scripts for creating token vectors and apllying word sense clustering. 
-2. SemanticChangeDetection: Contains several python scripts for measuring the sematnic change of words/tokens.
+1. WordSenseClustering: Contains several python scripts for creating token vectors and applying word sense clustering using different token vector representations
+2. SemanticChangeDetection: Contains several python scripts for measuring the semantic change of words using different token vector representations. 
 
 ## Usage
 
