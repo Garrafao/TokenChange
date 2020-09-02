@@ -27,11 +27,11 @@ The repository conatins the folders:
 
 The scripts should be run directly from the main directory. All scripts can be run directly from the command line:
 
-	python representations/count.py <corpDir> <outPath> <windowSize>
+	python WordSenseClustering/Bert.py <pathTestSentences> <outPathVectors> <vecType>
 
 e.g.
 
-	python representations/count.py corpora/test/corpus1/ test_matrix1 1
+	python WordSenseClustering/Bert.py Data/monetary.csv Storage/SecondOrder/Vectors.npz lemma
 
 The usage of each script can be understood by running it with help option `-h`, e.g.:
 
