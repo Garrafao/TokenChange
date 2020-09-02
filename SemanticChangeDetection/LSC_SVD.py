@@ -172,7 +172,7 @@ def main():
     print("Average pairwise distance:")
     print(APD)
     print("")
-    print("Cluster similarity:")
+    print("JSD:")
     print(dist)
     print("")
   
