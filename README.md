@@ -61,7 +61,7 @@ pip install -r requirements.txt
 ## Example Word sense clustering
 
 
-The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering precision will automatically be stored into a file. All methods can be found in the WordSenseClustering folder.
+The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering performance will automatically be stored into a file. All methods can be found in the WordSenseClustering folder.
 
 
 ### Example count based: 
