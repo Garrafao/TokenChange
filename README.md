@@ -30,7 +30,7 @@ The scripts should be run directly from the main directory. All scripts can be r
 
 e.g.
 
-	python WordSenseClustering/Bert.py Data/monetary.csv Storage/SecondOrder/Vectors.npz lemma
+	python WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 
 The usage of each script can be understood by running it with help option `-h`, e.g.:
 
@@ -74,15 +74,15 @@ The first set of methods is for applying word sense clustering to the uses of a 
 
 1) Create a vector for each word type in a corpus by counting:
 ```python 
-python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy
+python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
 2) Create token vectors of sample sentences by summing up all co-occurring type vectors
 ```python 
-python WordSenseClustering/CountBasedVectors.py Storage/FirstOrder/Vectors.npz Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
+python WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
 3) Cluster the vectors and compare to gold clustering 
 ```python 
-python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
 ```
 
@@ -91,15 +91,15 @@ python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/mo
 
 1) Create a vector for each type of a corpus by counting to get the iDf values: 
 ```python 
-python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy
+python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
 2) Create token vectors of sample sentences by summing up all co-occurring type vectors, given by Google's word2vec
 ```python 
-python WordSenseClustering/W2v.py Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
+python WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
 3) Cluster the vectors and compare to gold clustering
 ```python
-python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
 ```
 
@@ -109,11 +109,11 @@ python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/mo
 
 1) Create lemmatized token vectors of sample sentences using Google's BERT
 ```python
-python WordSenseClustering/Bert.py Data/monetary.csv Storage/SecondOrder/Vectors.npz lemma
+python WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 ```
 2) Cluster the vectors and compare to gold clustering 
 ```python
-python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
 ```
 
@@ -123,15 +123,15 @@ The scripts create token vectors for sentences of two times and clusters them. T
 
 ### Example count based:
 ```python
-python SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 20 Storage/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
+python SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20 Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
 ```
 ### Example word2vec: 
 ```python
-python SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz
+python SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz
 ```
 ### Example BERT:
 ```python
-python SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv lemma gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10
+python SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv lemma gaac Files/LSC/lsc_scores.csv 0.2 0.02 10
 ```
 
 BibTex
