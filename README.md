@@ -1,26 +1,60 @@
 # TokenChange
 
+Repository containing code for [this Bachelor Thesis](#bibtex).
 
+## Contents
+
+This repository contains several methods for:
+
+1. Creating contextualized token vectors 
+2. Clustering token vectors into senses
+3. Analysing the sematic change of words/tokens 
+
+Based on: 
+
+1. Count based vectors 
+2. Pretrained word vetors from Google's word2vec 
+3. Token embeddings created by BERT
+
+The repository conatins the folders: 
+
+1. WordSenseClustering: Contains several python scripts for creating token vectors and apllying word sense clustering. 
+2. SemanticChangeDetection: Contains several python scripts for measuring the sematnic change of words/tokens.
+
+## Usage
+
+***Change this***
+
+The scripts should be run directly from the main directory. All scripts can be run directly from the command line:
+
+	python WordSenseClustering/Bert.py <pathTestSentences> <outPathVectors> <vecType>
+
+e.g.
+
+	python WordSenseClustering/Bert.py Data/monetary.csv Storage/SecondOrder/Vectors.npz lemma
+
+The usage of each script can be understood by running it with help option `-h`, e.g.:
+
+	python WordSenseClustering/Bert.py -h
+
+We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.8.5. Install the required packages running `pip install -r requirements.txt`.
 
 ## Necessary data (store it in the Data folder):
 
-Corpus (In the example I used ccoha2)
+- Corpus (In the example I used [CCOHA2 from SemEval-2020 Task 1](https://www.ims.uni-stuttgart.de/en/research/resources/corpora/sem-eval-ulscd-eng/),
+- Pretrained word2vec vectors: Can be downloaded [here](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit),
+- BERT embeddings will be installed with transformers.
 
-Pretrained word2vec model
+## External packages
 
-## Used packages
+The following files are drawn from [LSCDetection](https://github.com/Garrafao/LSCDetection).
 
-The following files are used from https://github.com/Garrafao/LSCDetection:
+- utils_.py
+- svd.py
+- ppmi.py 
+- count.py 
 
-utils_.py
-
-svd.py
-
-ppmi.py 
-
-count.py 
-
-They will be used, after running the import script: 
+They will be downloaded, after running the import script: 
 ```python 
 ipython import.py
 ```
@@ -34,25 +68,26 @@ pip install torch --user
 ```
 pip install transformers --user
 ```
+
 ## Example Word sense clustering
 
 
-The first set of methods is for applying word sense clustering of the uses of a specific word. All methods can be found in the WordSenseClustering folder: 
+The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering precision will automatically be stored into a file. All methods can be found in the WordSenseClustering folder.
 
 
 ### Example count based: 
 
-1) Create a vector for each type of a corpus by counting:
+1) Create a vector for each word type in a corpus by counting:
 ```python 
-ipython WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy
+python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy
 ```
 2) Create token vectors of sample sentences by summing up all co-occurring type vectors
 ```python 
-ipython WordSenseClustering/CountBasedVectors.py Storage/FirstOrder/Vectors.npz Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
+python WordSenseClustering/CountBasedVectors.py Storage/FirstOrder/Vectors.npz Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
-3) Cluster the vectors and compare it to the epected clusterin 
+3) Cluster the vectors and compare to gold clustering 
 ```python 
-ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
 
 ```
 
@@ -61,57 +96,60 @@ ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/m
 
 1) Create a vector for each type of a corpus by counting to get the iDf values: 
 ```python 
-ipython WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy
+python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors of sample sentences by summing up all co-occurring type vectors, given by googles word2vec
+2) Create token vectors of sample sentences by summing up all co-occurring type vectors, given by Google's word2vec
 ```python 
-ipython WordSenseClustering/W2v.py Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
+python WordSenseClustering/W2v.py Data/monetary.csv Storage/FirstOrder/w2i.npz.npy Storage/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
-3) Cluster the vectors and compare it to the epected clusterin
+3) Cluster the vectors and compare to gold clustering
 ```python
-ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
 
 ```
 
 
 
-### Example Bert:
+### Example BERT:
 
-1) Create lemmatized token vectors of sample sentences using googles BERT
+1) Create lemmatized token vectors of sample sentences using Google's BERT
 ```python
-ipython WordSenseClustering/Bert.py Data/monetary.csv Storage/SecondOrder/Vectors.npz lemma
+python WordSenseClustering/Bert.py Data/monetary.csv Storage/SecondOrder/Vectors.npz lemma
 ```
-2)Cluster the vectors and compare it to the epected clusterin 
+2) Cluster the vectors and compare to gold clustering 
 ```python
-ipython WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
+python WordSenseClustering/Clustering.py Storage/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Storage/SecondOrder/lables.csv Storage/SecondOrder/cluster.csv
 
 ```
 
 
 ## Example Lexical semantic change detection
-The scripts creates the vectors for sentences of two times and clusters them and then automatically saves the semtantic change scores in a file. 
+The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores in a file. 
 
 ### Example count based:
 ```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 20 Storage/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
+python SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 20 Storage/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
 ```
 ### Example word2vec: 
 ```python
-ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz
+python SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10 Storage/FirstOrder/Vectors.npz Storage/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz
 ```
-### Example Bert:
+### Example BERT:
 ```python
-ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv lemma gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10
+python SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Storage/SecondOrder/Vectors.npz Storage/SecondOrder/lables.csv lemma gaac Storage/SecondOrder/lsc.csv 0.2 0.02 10
 ```
 
+BibTex
+--------
 
-
-
-
-
-
-
-
-
+```
+@bachelorsthesis{Laicher2020,
+title={{Historical word sense clustering with deep contextualized word embeddings}},
+author={Laicher, Severin},
+year={2020},
+school = {Institute for Natural Language Processing, University of Stuttgart},
+address = {Stuttgart}
+}
+```
 
 
