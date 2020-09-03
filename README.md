@@ -4,6 +4,33 @@ Repository containing code for [this Bachelor Thesis](#bibtex).
 
 ## Contents
 
+My bachelor thesis deals with the automatic understanding of the uses of ambigous words. One way to understand the meaning of word uses is to create token based-vectors for each individual word use. Token vectors can be created in many different ways and in my work 3 different ones were presented: 
+
+1. Count based vectors:
+By summing up all self-trained, count-based, PPMI & SVD reduced word vectors that co-occur with the word use.
+
+2. Pretrained word vetors from Google's word2vec 
+By summing up all pretrained predictive word2vec word vectors that co-occur with the word use.
+
+3. Token embeddings created by BERT:
+By creating predictive token vectors using BERT.
+
+After the creation of token vectors they can be clustered into uses with similar meanings. Here this is done by initializing K-means with precalculated centroids by applying Group-Average-Agglomerative-Clustering on a sample of vectors, in order to find a better solution.
+
+The performance of the clustering is measured by comparing the expected clustering labels with the actual clustering labels using the adjusted rand index and the cluster accuracy measure.
+
+
+
+The second part of my Bachelor thesis deals with the discovery of lexical semantic change. This is done by creating and comparing token vectors of two different times . 
+
+3 different comparison measures are used:
+
+1. Average pairiwse distance (APD): 
+Given two lists of token vectors (one for each period of time), where one ector represents one use of the word in this period. The APD chooses a sample of vectors from both times and measures their average mutual cosine distance. A high average distance between the two times indicates a change in the usage of the word.
+
+2. Cosine similarity (COS):
+
+
 
 
 
@@ -23,12 +50,6 @@ This repository contains several methods for:
 1. Creating contextualized token vectors 
 2. Clustering token vectors into senses
 3. Analysing the sematic change of words/tokens 
-
-Based on: 
-
-1. Count based vectors 
-2. Pretrained word vetors from Google's word2vec 
-3. Token embeddings created by BERT
 
 The repository conatins  two different types of methods: 
 
