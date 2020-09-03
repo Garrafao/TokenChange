@@ -89,11 +89,11 @@ The first set of methods is for creating token vectors and applying word sense c
 
 ### Example count based: 
 
-1) Create a vector for each word type in a corpus by counting and applying PPMI and SVD reduction. 
+1) Create a vector for each word type of the ccoha2 corpus by counting and applying PPMI and SVD reduction. 
 ```python 
 python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors of sample sentences by summing up all co-occurring type vectors.
+2) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors.
 ```python 
 python WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
@@ -106,11 +106,11 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 ### Example word2vec: 
 
-1) Create a vector for each type of a corpus by counting to get the inverse document values of each word.
+1) Create a vector for each type of the ccoha2 corpus by counting to get the inverse document values of each word.
 ```python 
 python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors of sample sentences by summing up all co-occurring type vectors, given by Google's word2vec.
+2) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
 ```python 
 python WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
@@ -124,7 +124,7 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 ### Example BERT:
 
-1) Create lemmatized token vectors of sample sentences using Google's BERT
+1) Create lemmatized token vectors of sample occurences of the pseudoword ("monetary/gothic") by using Google's BERT
 ```python
 python WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 ```
@@ -136,7 +136,7 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 
 ## Example Lexical semantic change detection
-The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores (APD, COS, JSD) and the actual clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). 
+The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores (APD, COS, JSD) and the actual clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). In this example both test sentences are identical, so the semantic change score should be zero or close tp zer0o. 
 
 ### Example count based:
 ```python
