@@ -4,7 +4,7 @@ Repository containing code for [this Bachelor Thesis](#bibtex).
 
 ## Contents
 
-The first part of my bachelor thesis deals with the automatic understanding of the uses of ambigous words. One way to understand the meaning of word uses is to create token based-vectors for each individual word use. Token vectors can be created in many different ways and in my work 3 different ones were presented: 
+The first part of my bachelor thesis deals with the automatic understanding of the uses of ambigous words. One way to understand the meaning of word uses is to create token based-vectors for each individual word use. Token vectors can be created in many different ways and in my work three different ones were presented: 
 
 1. Count based vectors:
 By summing up all self-trained, count-based, PPMI & SVD reduced word vectors that co-occur with the word use.
@@ -19,11 +19,9 @@ After the creation of token vectors they can be clustered into uses with similar
 
 The performance of the clustering is measured by comparing the expected clustering labels with the actual clustering labels using the adjusted rand index and the cluster accuracy measure.
 
+The second part of my bachelor thesis deals with the discovery of lexical semantic change. This is done by creating and comparing token vectors of two different times. 
 
-
-The second part of my Bachelor thesis deals with the discovery of lexical semantic change. This is done by creating and comparing token vectors of two different times . 
-
-3 different comparison measures are used:
+Three different comparison measures are used:
 
 1. Average pairiwse distance (APD): 
 Given two lists of token vectors (one for each period of time), where one ector represents one use of the word in this period. The APD chooses a sample of vectors from both times and measures their average mutual cosine distance. A high average distance between the two times indicates a change in the usage of the word.
