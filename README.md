@@ -4,7 +4,7 @@ Repository containing code for [this Bachelor Thesis](#bibtex).
 
 ## Contents
 
-My bachelor thesis deals with the automatic understanding of the uses of ambigous words. One way to understand the meaning of word uses is to create token based-vectors for each individual word use. Token vectors can be created in many different ways and in my work 3 different ones were presented: 
+The first part of my bachelor thesis deals with the automatic understanding of the uses of ambigous words. One way to understand the meaning of word uses is to create token based-vectors for each individual word use. Token vectors can be created in many different ways and in my work 3 different ones were presented: 
 
 1. Count based vectors:
 By summing up all self-trained, count-based, PPMI & SVD reduced word vectors that co-occur with the word use.
@@ -29,27 +29,12 @@ The second part of my Bachelor thesis deals with the discovery of lexical semant
 Given two lists of token vectors (one for each period of time), where one ector represents one use of the word in this period. The APD chooses a sample of vectors from both times and measures their average mutual cosine distance. A high average distance between the two times indicates a change in the usage of the word.
 
 2. Cosine similarity (COS):
+The idea is to average all the vectors from both periods of time and then compare these two average vectors by using the cosine distance.
 
-
-
-
-
-
-
-
-
-
-
-
-
+3. Jensen Shannon difference (JSD):
+The third measure is more complex, a clustering of all the vectors from both periods of time together needs to be performed. The resulting labels of the clustering can then be divided into the labels that correspond to the vectors from the first period of time and the vectors from the second period. Then the two list of labels are compared by using  the Jensen-Shannon difference,  that  compares  the  usage distributions of the two clusterings and returns a high value, if there is achange in the usage.
 
 For more context information check [this Bachelor Thesis](#bibtex).
-
-This repository contains several methods for:
-
-1. Creating contextualized token vectors 
-2. Clustering token vectors into senses
-3. Analysing the sematic change of words/tokens 
 
 The repository conatins  two different types of methods: 
 
