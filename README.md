@@ -41,8 +41,7 @@ The repository conatins  two different types of methods:
 
 ## Usage
 
-
-The scripts should be run directly from the main directory. All scripts can be run directly from the command line:
+Not that all skripts expect several parameter values. What parameters these are and what values they expect can be taken from the scripts. Below are examples for all scripts and their parameters. All scripts can be run directly from the command line:   
 
 	python WordSenseClustering/Bert.py <pathTestSentences> <outPathVectors> <vecType>
 
@@ -85,20 +84,20 @@ pip install -r requirements.txt
 ## Example Word sense clustering
 
 
-The first set of methods is for applying word sense clustering to the uses of a specific word. The clustering performance will automatically be stored into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the WordSenseClustering folder.
+The first set of methods is for creating token vectors and applying word sense clustering to the uses of a specific word. The clustering performance scores will automatically be stored (adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the WordSenseClustering folder.
 
 
 ### Example count based: 
 
-1) Create a vector for each word type in a corpus by counting:
+1) Create a vector for each word type in a corpus by counting and applying PPMI and SVD reduction. 
 ```python 
 python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors of sample sentences by summing up all co-occurring type vectors
+2) Create token vectors of sample sentences by summing up all co-occurring type vectors.
 ```python 
 python WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
-3) Cluster the vectors and compare to gold clustering 
+3) Cluster the vectors and compare to expected clustering.
 ```python 
 python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
@@ -107,15 +106,15 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 ### Example word2vec: 
 
-1) Create a vector for each type of a corpus by counting to get the iDf values: 
+1) Create a vector for each type of a corpus by counting to get the inverse document values of each word.
 ```python 
 python WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors of sample sentences by summing up all co-occurring type vectors, given by Google's word2vec
+2) Create token vectors of sample sentences by summing up all co-occurring type vectors, given by Google's word2vec.
 ```python 
 python WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
-3) Cluster the vectors and compare to gold clustering
+3) Cluster the vectors and compare to expected clustering.
 ```python
 python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
@@ -129,7 +128,7 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 ```python
 python WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 ```
-2) Cluster the vectors and compare to gold clustering 
+3) Cluster the vectors and compare to expected clustering.
 ```python
 python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
@@ -137,7 +136,7 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 
 ## Example Lexical semantic change detection
-The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores of the adjusted rand index and the cluster accuracy and the actual clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). 
+The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores (APD, COS, JSD) and the actual clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). 
 
 ### Example count based:
 ```python
