@@ -4,6 +4,20 @@ Repository containing code for [this Bachelor Thesis](#bibtex).
 
 ## Contents
 
+
+
+
+
+
+
+
+
+
+
+
+
+For more context information check [this Bachelor Thesis](#bibtex).
+
 This repository contains several methods for:
 
 1. Creating contextualized token vectors 
@@ -119,7 +133,7 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 
 ## Example Lexical semantic change detection
-The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores and the clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). 
+The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores of the adjusted rand index and the cluster accuracy and the actual clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). 
 
 ### Example count based:
 ```python
