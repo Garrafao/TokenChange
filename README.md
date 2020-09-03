@@ -119,7 +119,7 @@ python WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz D
 
 
 ## Example Lexical semantic change detection
-The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores in a file (`Files/LSC/lsc_scores.csv`). 
+The scripts create token vectors for sentences of two times and clusters them. Then it automatically saves the semantic change scores and the clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). 
 
 ### Example count based:
 ```python
