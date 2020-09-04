@@ -1,22 +1,21 @@
 #!/usr/bin/env python
-# coding: utf-8
-# In[34]:
+import sys
+sys.path.append('./modules/')
 
+import svd
+import ppmi
+import count
+from utils_ import Space
+
+import os
 import warnings
 warnings.filterwarnings("ignore")
 from docopt import docopt
 import logging
 import time
 import numpy as np
-from utils_ import Space
 import gzip
 import math
-
-from utils_ import Space
-import count
-import ppmi
-import svd
-
 
 
 def main():
@@ -29,7 +28,7 @@ def main():
         
     Arguments:
        
-        <representation> = Either "COUNT", "PPMI" or "SVD"
+        <representation> = Either "count", "ppmi" or "svd"
         <pathCorpus> = Path to the corpus
         <outPathVectors> = Path for storing the vectors 
         <outPathw2i> = Path for storing w2i
@@ -87,17 +86,17 @@ def main():
 
     #Create co-occurence matrix
     logging.critical("Create co-occurence matrix")             
-    get_ipython().run_line_magic('run', 'count.py --len Data/ccoha2.txt.gz outPathVectors 20')
+    get_ipython().run_line_magic('run', 'count.py --len $pathCorpus $outPathVectors 20')
     
     if representation == "ppmi":
         #Apply PPMI        
-        get_ipython().run_line_magic('run', 'ppmi.py --len outPathVectors outPathVectors 1 1')
+        get_ipython().run_line_magic('run', 'ppmi.py --len $outPathVectors $outPathVectors 1 1')
     
     if representation == "svd":
         #Apply PPMI 
-        get_ipython().run_line_magic('run', 'ppmi.py --len outPathVectors outPathVectors 1 1')
+        get_ipython().run_line_magic('run', 'ppmi.py --len $outPathVectors $outPathVectors 1 1')
         #Apply SVD
-        get_ipython().run_line_magic('run', 'svd.py --len outPathVectors outPathVectors 100 0')
+        get_ipython().run_line_magic('run', 'svd.py --len $outPathVectors $outPathVectors 100 0')
         
 
     #Save w2i
