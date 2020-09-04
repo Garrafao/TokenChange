@@ -8,6 +8,7 @@ warnings.filterwarnings("ignore")
 from docopt import docopt
 import logging
 import time
+import random
 import numpy as np
 import csv
 from sklearn import preprocessing
@@ -70,7 +71,7 @@ def main():
     logging.critical("SVD LSC start")
     
     #Create the vectors of corpora 1
-    logging.critical("Create and cluster the vectors of corpora 1")
+    logging.critical("Create the vectors of corpora 1")
 
     get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences1 $pathW2i $outPathVectors $windowSize $pathCorpora')    
  
@@ -78,7 +79,7 @@ def main():
     vectors1=inSpace.matrix.toarray()
        
     #Create the vectors of corpora 2
-    logging.critical("Create and cluster the vectors of corpora 2")    
+    logging.critical("Create the vectors of corpora 2")    
     get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences2 $pathW2i $outPathVectors $windowSize $pathCorpora')  
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
