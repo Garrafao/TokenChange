@@ -13,6 +13,7 @@ import csv
 from sklearn import preprocessing
 import gzip
 import os 
+import random
 from utils_ import Space
 
 import torch
@@ -68,7 +69,7 @@ def main():
     vectors1=inSpace.matrix.toarray()
     
     #Create the vectors of corpora 2
-    logging.critical("Create and cluster the vectors of corpora 2")    
+    logging.critical("Create the vectors of corpora 2")    
     get_ipython().run_line_magic('run', 'WordSenseClustering/Bert.py $pathSentences2 $outPathVectors $vecType')
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
@@ -93,7 +94,7 @@ def main():
         APDBinary.append(0) 
  
     #Create and cluster the combined vectors of both corpora
-    logging.critical("Create and cluster the combined vectors of both corpora")
+    logging.critical("Create the combined vectors of both corpora")
     vectors = np.concatenate((vectors1, vectors2), axis=0)
     outSpace = Space(matrix = vectors, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
