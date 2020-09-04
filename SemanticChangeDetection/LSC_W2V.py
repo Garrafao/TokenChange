@@ -13,6 +13,7 @@ import csv
 from sklearn import preprocessing
 import gzip
 import os 
+import random
 from utils_ import Space
 
 
@@ -67,13 +68,13 @@ def main():
     logging.critical("W2v LSC start")
     
     #Create the vectors of corpora 1
-    logging.critical("Create and cluster the vectors of corpora 1")
+    logging.critical("Create the vectors of corpora 1")
     get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences1 $pathToW2i $outPathVectors $windowSize $pathCorpora')
     inSpace = Space(path=outPathVectors)
     vectors1=inSpace.matrix.toarray()
     
     #Createthe vectors of corpora 2
-    logging.critical("Create and cluster the vectors of corpora 2")    
+    logging.critical("Create the vectors of corpora 2")    
     get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences2 $pathToW2i $outPathVectors $windowSize $pathCorpora')
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
