@@ -60,7 +60,7 @@ We recommend you to run the scripts within a [virtual environment](https://pypi.
 
 After executing the import.py script the Data folder will contain the lemmatized ccoha2 corpus (https://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/sem-eval-ulscd-eng/), a file that contains test sentences for the pseudoword "monetary/gothic" and the pre trained word vectors from word2vec. (From where?)
 
-In order to use the word2vec vectors, please dowload the vectors https://drive.google.com/uc?export=download&confirm=3aS5&id=0B7XkCwpI5KDYNlNUTTlSS21pQmM and move the file into the Data folder.
+In order to use the word2vec vectors, please dowload the vectors https://drive.google.com/uc?export=download&confirm=3aS5&id=0B7XkCwpI5KDYNlNUTTlSS21pQmM and move the .bin file into the Data folder.
 ## External packages
 
 The following files are drawn from [LSCDetection](https://github.com/Garrafao/LSCDetection).
