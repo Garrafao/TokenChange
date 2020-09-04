@@ -78,7 +78,7 @@ ipython import.py
 
 After that install the required packages running:
 ```python 
-pip install -r requirements.txt
+pip install -r requirements.txt --user
 ```
 
 ## Example Word sense clustering
