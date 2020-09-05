@@ -62,12 +62,30 @@ def main():
     #Load w2i
     w2i = np.load(pathw2i, allow_pickle='TRUE').item()
 
+
+
+
+
+
+
+
+
     #Load saved wordVectorMatrix
-    inSpace = Space(path=pathMatrix)
+
+    try:
+        inSpace =  Space(path=pathMatrix, format='w2v')
+    except UnicodeDecodeError:
+        inSpace = Space(path=pathMatrix)
+
+        
+    
+    #inSpace =  Space(path=pathMatrix, format='w2v')
+    #inSpace = Space(path=pathMatrix)
     cooc_mat_sparse=inSpace.matrix    
       
     #Calculate IDF for every word 
     docFreq={}
+         
     for i in range(0, len(w2i)):
         docFreq[i]=0
     with gzip.open(pathCorpus,'rt', encoding="utf-8") as sentences: 
