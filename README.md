@@ -96,7 +96,7 @@ pip install -r requirements.txt
 
 ## Example word sense clustering
 
-The first set of methods is for creating token vectors and applying word sense clustering to the uses of a specific word. The clustering performance scores will automatically be stored (adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the `WordSenseClustering/` folder.
+The first set of methods is for creating token vectors and applying word sense clustering to the uses of a specific word. The clustering performance scores will automatically be stored (mean adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the `WordSenseClustering/` folder.
 
 
 ### Example count-based: 
