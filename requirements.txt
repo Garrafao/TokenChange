@@ -2,7 +2,7 @@ torch==1.6.0
 transformers==3.0.2
 docopt==0.6.2
 gensim==3.8.3
-numpy==1.18.4
+numpy==1.17.1
 scikit-learn==0.22.1
 scipy==1.4.1
 sklearn==0.0
