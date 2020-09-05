@@ -96,7 +96,7 @@ The first set of methods is for creating token vectors and applying word sense c
 ```python 
 ipython WordSenseClustering/WordVectors.py ppmi Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors.
+2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors.
 ```python 
 ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
