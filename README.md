@@ -8,10 +8,10 @@ Repository containing code for [this Bachelor Thesis](#bibtex).
  The first part of my bachelor thesis deals with the automatic understanding of the uses of ambigous words. One way to understand the meaning of word uses is to create (token) vectors for each individual word use. Token vectors can be created in many different ways and in my work three different ones were compared (for references refer to my thesis): 
 
 1. Self-trained count-based type vectors:
-First learn count-based (count+PPMI+SVD) type vectors from some corpus, then sum up all type vectors that co-occur with the word use.
+First learn count-based (count+PPMI+SVD) type vectors from a corpus then sum up all type vectors that co-occur with the word use, using the words inverse document frequency (iDf) as weight, since it improves the result.  
 
 2. Pretrained type vectors from Google's word2vec:
-First download pre-trained word2vec (SGNS) type vectors, then sum up all type vectors that co-occur with the word use.
+First download pre-trained word2vec (SGNS) type vectors, then sum up all type vectors that co-occur with the word use, using the words inverse document frequency as weight, since it improves the result.  
 
 3. Pretrained token vectors from BERT:
 First download pre-trained BERT vectors, then calculate pretrained token vectors using BERT.
@@ -92,11 +92,11 @@ The first set of methods is for creating token vectors and applying word sense c
 
 ### Example count-based: 
 
-1) Create a type vector for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction. 
+1) Create a type vector and the iDf value for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction.  
 ```python 
 ipython WordSenseClustering/WordVectors.py ppmi Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors.
+2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight.
 ```python 
 ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
@@ -109,11 +109,11 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 
 ### Example word2vec: 
 
-1) Create a vector for each type of the CCOHA2 corpus by counting to get the inverse document frequency (IDF) values of each word.
+1) Create a vector and its iDf value for each type of the CCOHA2 corpus by counting. The iDf values are needed. 
 ```python 
 ipython WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
+2) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec, using their iDf value as weight.
 ```python 
 ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
