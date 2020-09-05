@@ -66,6 +66,15 @@ ipython import.py
 ```
 the `Data/` folder will contain the lemmatized [CCOHA2](https://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/sem-eval-ulscd-eng/) corpus and a file that contains test sentences for the pseudoword "monetary/gothic". Please additionally download the [word2vec vectors](https://drive.google.com/uc?export=download&confirm=3aS5&id=0B7XkCwpI5KDYNlNUTTlSS21pQmM) and move the .bin file into the `Data/` folder.
 
+In the following examples I will only use the lemmatized corpus and lemmatized test sentences (The ccoha corpora are available both, lemmatized and non-lemmatized). It is also possible to use non-lemmatized test sentences, which performed better (see [this Bachelor Thesis](#bibtex))
+
+Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too!
+
+The other two models can handle both, lemmatized and non-lemmatized test sentences. 
+
+
+
+
 ## External packages
 
 The following files are drawn from [LSCDetection](https://github.com/Garrafao/LSCDetection).
@@ -153,6 +162,9 @@ ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv F
 ```python
 ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv lemma gaac Files/LSC/lsc_scores.csv 0.2 0.02 10
 ```
+
+
+
 
 BibTex
 --------
