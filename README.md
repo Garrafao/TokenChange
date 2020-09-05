@@ -43,7 +43,7 @@ The repository contains two different types of scripts:
 
 ## Usage
 
-Note that all scripts expect several parameter values. What parameters these are and what values they expect can be seen from the scripts. Below are examples for all scripts and their parameters. All scripts can be run directly from the command line:   
+All scripts should be run from the main directory. Note that all scripts expect several parameter values. What parameters these are and what values they expect can be seen from the scripts. Below are examples for all scripts and their parameters. All scripts can be run directly from the command line:   
 
 	ipython WordSenseClustering/Bert.py <pathTestSentences> <outPathVectors> <vecType>
 
@@ -82,7 +82,7 @@ ipython import.py
 
 After that install additional required packages running:
 ```python 
-pip install -r requirements.txt --user
+pip install -r requirements.txt 
 ```
 
 ## Example word sense clustering
