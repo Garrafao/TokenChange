@@ -14,7 +14,7 @@ First learn count-based (count+PPMI+SVD) type vectors from some corpus, then sum
 First download pre-trained word2vec (SGNS) type vectors, then sum up all type vectors that co-occur with the word use.
 
 3. Pretrained token vectors from BERT:
-First download pre-trained BERT vectors, then get sentence embedding from BERT model for the word use.
+First download pre-trained BERT vectors, then calculate pretrained token vectors using BERT.
 
 After the creation of token vectors they can be clustered into clusters of uses with similar meanings. Here this is done by initializing K-means clustering with precalculated centroids by applying Group-Average-Agglomerative-Clustering on a sample of vectors.
 
