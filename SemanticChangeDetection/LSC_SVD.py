@@ -147,15 +147,6 @@ def main():
  
     dist = distance.jensenshannon(p, q)
     
-    print("cosine distance:")
-    print(cosineDistance)
-    print("")
-    print("Average pairwise distance:")
-    print(APD)
-    print("")
-    print("JSD:")
-    print(dist)
-    print("")
   
     filename1 = os.path.splitext(os.path.basename(pathSentences1))[0]
     filename2 = os.path.splitext(os.path.basename(pathSentences2))[0]
@@ -166,7 +157,27 @@ def main():
     cosBin=[filename1, filename2, "cosineDistanceBinary",cosineDistanceBinary[0]]
     APDBin=[filename1, filename2, "APDBinary",APDBinary[0]]
     clusterBin=[filename1, filename2, "clusterScoreBinary",clusterScoreBinary[0]]
-			
+	
+	
+	
+    print("cosine distance:")
+    print(cosineDistance)
+    print("")
+    print("Average pairwise distance:")
+    print(APD)
+    print("")
+    print("JSD:")
+    print(dist)
+    print("")
+    print("cosine distance binary:")
+    print(cosineDistanceBinary[0])
+    print("APD distance binary:")
+    print(APDBinary[0])
+    print("JSD binary:")
+    print(clusterScoreBinary[0])
+	
+	
+	
     with open(pathResults, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerows([cos, apd, cluster, cosBin, APDBin, clusterBin])    
