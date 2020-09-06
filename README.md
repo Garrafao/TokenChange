@@ -43,7 +43,7 @@ All words with a graded APD value above a certain threshold are assigned the val
 All words with a graded COS value above a certain threshold are assigned the value 1 and all below the threshhold the value 0.
 
 3) Cluster based: 
-The occurrences of the words from both corpora are clustered together and if there is a cluster, which contains more or equal 10 elements from the one time and less than 10 at the other time, the word is assigned the change value 1. else 0.
+The occurrences of the words from both corpora are clustered together and if there is a cluster, which contains more or equal k elements from the one time and less than k at the other time, the word is assigned the change value 1. else 0.
 
 
 For more information check [this Bachelor Thesis](#bibtex).
