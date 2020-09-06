@@ -160,6 +160,8 @@ def main():
 	
 	
 	
+    print("Graded LSC:")
+    print("")
     print("cosine distance:")
     print(cosineDistance)
     print("")
@@ -168,6 +170,9 @@ def main():
     print("")
     print("JSD:")
     print(dist)
+    print("")
+    print("")
+    print("Binary LSC:")
     print("")
     print("cosine distance binary:")
     print(cosineDistanceBinary[0])
