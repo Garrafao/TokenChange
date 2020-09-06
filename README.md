@@ -23,7 +23,7 @@ The performance of the clustering is measured by comparing the expected (human-a
 ### Lexical Semantic Change Detection
  The second part of my bachelor thesis deals with the discovery of lexical semantic change. This is done by creating and comparing token vectors of two different times. 
 
-Three different comparison measures are used:
+Three different comparison measures are used for finding graded LSC values:
 
 1. Average pairiwse distance (APD): 
 Given two lists of token vectors (one for each period of time), where one vector represents one use of the word in this period. The APD chooses a sample of vectors from both times and measures their average cosine distance. A high average distance between the two times indicates a change in the usage of the word.
@@ -33,6 +33,18 @@ The idea is to average all the vectors from both periods of time and then compar
 
 3. Jensen Shannon Distance (JSD):
 The third measure is more complex, a clustering of all the token vectors from both periods of time together needs to be performed. The resulting labels of the clustering can then be divided into the labels that correspond to the vectors from the first period of time and the vectors from the second period. Then the two lists of labels are compared using the Jensen-Shannon Distance, that compares the usage distributions of the two clusterings and returns a high value, if there is a change in the usage.
+
+And three measures for finding binary LSC values:
+
+1) APD: 
+All words with a graded APD value above a certain threshold are assigned the value 1 and all below the threshhold the value 0.
+
+2) COS: 
+All words with a graded COS value above a certain threshold are assigned the value 1 and all below the threshhold the value 0.
+
+3) Cluster based: 
+The occurrences of the words from both corpora are clustered together and if there is a cluster, which contains more or equal 10 elements from the one time and less than 10 at the other time, the word is assigned the change value 1. else 0.
+
 
 For more information check [this Bachelor Thesis](#bibtex).
 
