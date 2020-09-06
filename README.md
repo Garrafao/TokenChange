@@ -171,7 +171,7 @@ The scripts create token vectors for sentences of two time periods and cluster t
 
 ### Example word2vec:
 ```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20 Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
+ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20  Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
 ```
 ### Example count-based: 
 ```python
