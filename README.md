@@ -70,10 +70,17 @@ In the following examples I will only use the lemmatized corpus and lemmatized t
 
 Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too! The word2vec vocabulary only contains lemmatized words, so it can not be used on non-lemmatized test sentences.
 
-BERT model can handle both, lemmatized and non-lemmatized test sentences. 
+BERT model can handle both, lemmatized and non-lemmatized test sentences.
+, just by changing the parameter "lemma" to "token".
 
+The test sentences should be stored in a csv file with the following values for each sentence: 
 
-
+sentence: The lemmatized sentence. 
+target_index: The index of the target word in the sentence. 
+cluster: The expected cluster ID to which the word occurence belongs.
+original_word: In case of lemmatazation or pseudowords it is necessary to know what the original word was. 
+sentence_token: The non-lemmatized sentence
+sentence_pos: For each word its part-of-speach.
 
 ## External packages
 
