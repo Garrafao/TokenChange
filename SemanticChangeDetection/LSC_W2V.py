@@ -153,6 +153,8 @@ def main():
     APDBin=[filename1, filename2, "APDBinary",APDBinary[0]]
     clusterBin=[filename1, filename2, "clusterScoreBinary",clusterScoreBinary[0]]
 
+    print("Graded LSC:")
+    print("")
     print("cosine distance:")
     print(cosineDistance)
     print("")
@@ -161,6 +163,9 @@ def main():
     print("")
     print("JSD:")
     print(dist)
+    print("")
+    print("")
+    print("Binary LSC:")
     print("")
     print("cosine distance binary:")
     print(cosineDistanceBinary[0])
