@@ -26,7 +26,7 @@ def main():
 
     Usage:
         LSC_SVD.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <clusteringInitialization> <pathResults> <limitAGL> 
-        <limitCOS> <limitCluster> <pathToMatrix> <pathW2i> <windowSize> <pathCorpora>
+        <limitCOS> <limitCluster> <pathToMatrix> <pathW2i> <windowSize> <pathCorpora> <sentenceType>
         
     Arguments:
        
@@ -43,6 +43,7 @@ def main():
         <pathW2i> = Path to W2i
         <windowSize> = Window size (Good is 20)
         <pathCorpora> = Path to the corpora
+	<sentenceType> = "lemma" or "token"
         
         
         
@@ -63,6 +64,7 @@ def main():
     windowSize = int(args['<windowSize>'])
     pathCorpora = args['<pathCorpora>']
     pathResults =  args['<pathResults>']
+    sentenceType = args['<sentenceType>']
 
     
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
@@ -73,14 +75,14 @@ def main():
     #Create the vectors of corpora 1
     logging.critical("Create the vectors of corpora 1")
 
-    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences1 $pathW2i $outPathVectors $windowSize $pathCorpora')    
+    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences1 $pathW2i $outPathVectors $windowSize $pathCorpora $sentenceType')    
  
     inSpace = Space(path=outPathVectors)
     vectors1=inSpace.matrix.toarray()
        
     #Create the vectors of corpora 2
     logging.critical("Create the vectors of corpora 2")    
-    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences2 $pathW2i $outPathVectors $windowSize $pathCorpora')  
+    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences2 $pathW2i $outPathVectors $windowSize $pathCorpora $sentenceType')  
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
        
