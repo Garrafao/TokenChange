@@ -79,9 +79,9 @@ the `Data/` folder will contain the lemmatized [CCOHA2](https://www.ims.uni-stut
 
 In the following examples I will only use the lemmatized corpus and lemmatized test sentences (the ccoha corpora are available both, lemmatized and non-lemmatized). It is worth trying non-lemmatized test sentences, since BERT has achieved better results using non-lemmatized sentences in my thesis (see [this Bachelor Thesis](#bibtex)).
 
-Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too! The word2vec vocabulary only contains lemmatized words????????????????????, so it can not be used on non-lemmatized test sentences.
+Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too! 
 
-The BERT model can handle both, lemmatized and non-lemmatized test sentences.
+The BERT model and the word2vec model can handle both, lemmatized and non-lemmatized test sentences.
 , just by changing the parameter "lemma" to "token".
 
 The test sentences should be stored in a csv file with the following values for each sentence: 
@@ -146,7 +146,7 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 
 1) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
 ```python 
-ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 
+ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 lemma 
 ```
 3) Cluster the vectors and compare to expected clustering.
 ```python
@@ -183,7 +183,7 @@ ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv F
 
 ### Example word2vec:
 ```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20 
+ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20 lemma
 ```
 
 ### Example BERT:
