@@ -74,27 +74,27 @@ def main():
     logging.critical("Calculate contextVectorMatrix") 
 
     nonExisting=False
-    #self.target=str(self.testSentences[0]["original_word"])        
-    for dic in self.testSentences:
-        self.sentence = dic[sentType].split()
-        for i, word in enumerate(self.sentence):  
+    #self.target=str(testSentences[0]["original_word"])        
+    for dic in testSentences:
+        sentence = dic[sentType].split()
+        for i, word in enumerate(sentence):  
             if str(i) == dic['target_index']:
 
-                self.toMelt=[]
+                toMelt=[]
                 toMeltIDF=[]
-                self.lowerWindowSize = max(i-self.windowSize, 0)
-                self.upperWindowSize = min(i+self.windowSize, len(self.sentence))
-                self.window = self.sentence[self.lowerWindowSize:i] + self.sentence[i+1:self.upperWindowSize+1] 
+                lowerWindowSize = max(i-windowSize, 0)
+                upperWindowSize = min(i+windowSize, len(sentence))
+                window = sentence[lowerWindowSize:i] + sentence[i+1:upperWindowSize+1] 
                 if word in model.wv.vocab:
-                    for contextWord in self.window:
+                    for contextWord in window:
                         if contextWord in model.wv.vocab:
                             if contextWord != "$":
-                                self.toMelt.append(preprocessing.normalize([model.wv[contextWord]], norm='l2')[0]) 
+                                toMelt.append(preprocessing.normalize([model.wv[contextWord]], norm='l2')[0]) 
 
 
-                    self.contextVectorList.append(self.getContextVector(self.toMelt))  
+                    contextVectorList.append(getContextVector(toMelt))  
                 else:
-                    self.contextVectorList.append(np.zeros(300))
+                    contextVectorList.append(np.zeros(300))
 
 
     
