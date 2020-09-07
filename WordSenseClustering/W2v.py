@@ -62,9 +62,6 @@ def main():
     #Load Word2Vec
     model = gensim.models.KeyedVectors.load_word2vec_format('Data/GoogleNews-vectors-negative300.bin', binary=True)  
 
-    #Load w2i
-    w2i = np.load(pathw2i, allow_pickle='TRUE').item()
-
     #Load TestSentences 
     contextVectorList=[]
     testSentences=[]
