@@ -123,9 +123,9 @@ In this first example I will additionally explain what the parameters mean.
 
 1) Create a type vector for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction. 
 
-The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`)
+The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`), the type of sentences (`lemma`).
 ```python 
-ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
+ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy lemma
 ```
 2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. 
 
@@ -176,9 +176,9 @@ The scripts create token vectors for sentences from two time periods (based on t
 
 In this first example I will again additionally explain what the parameters mean.
 
-The parameters are the path to the test sentences (`Data/monetary.csv`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the clustering initialization type (`gaac`), the path where to store the LSC scores (`Files/LSC/lsc_scores.csv`), the APD limit (`0.2`), the COS limit (`0.02`), the minimum number of elements a cluster contains from one time and not from the other time, to be considered a gain or loss of a sense (`10`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path where to store the word-to-index (`Files/Vectors/FirstOrder/w2i.npz.npy`), the window size for words to be in context of each other (`20`), the path to the corpus (`Data/ccoha2.txt.gz`). 
+The parameters are the path to the test sentences (`Data/monetary.csv`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the clustering initialization type (`gaac`), the path where to store the LSC scores (`Files/LSC/lsc_scores.csv`), the APD limit (`0.2`), the COS limit (`0.02`), the minimum number of elements a cluster contains from one time and not from the other time, to be considered a gain or loss of a sense (`10`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path where to store the word-to-index (`Files/Vectors/FirstOrder/w2i.npz.npy`), the window size for words to be in context of each other (`20`), the path to the corpus (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).
 ```python
-ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz
+ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz lemma
 ```
 
 ### Example word2vec:
