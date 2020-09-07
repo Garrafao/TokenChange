@@ -168,7 +168,7 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 
 
 ## Example lexical semantic change detection
-The scripts create token vectors for sentences from two time periods (based on the three presented token vector representations) and clusters them. It automatically saves the binary and graded semantic change scores and the actual clustering labels in a file (`Files/LSC/lsc_scores.csv` and `Files/Clustering/cluster_labels.csv`). In this example both test sentences are identical, so the semantic change scores should be close to 0.0. 
+The scripts create token vectors for sentences from two time periods (based on the three presented token vector representations) and clusters them. It automatically saves the binary and graded semantic change scores in a file (`Files/LSC/lsc_scores.csv`). In this example both test sentences are identical, so the semantic change scores should be close to 0.0. 
 
 ### Example count-based: 
 
