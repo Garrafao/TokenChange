@@ -126,7 +126,7 @@ The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2
 ```python 
 ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 
 ```
-2) Create token vectors for all occurrences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. 
+2) Create lemmatized token vectors for all occurrences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. 
 
 The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (`20`), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).  
 ```python 
@@ -143,7 +143,7 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 
 ### Example word2vec: 
 
-1) Create token vectors of sample occurrences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
+1) Create lemmatized token vectors of sample occurrences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
 ```python 
 ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 lemma 
 ```
@@ -154,10 +154,9 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 ```
 
 
-
 ### Example BERT:
 
-1) Create lemmatized token vectors of sample occurrences of the pseudoword ("monetary/gothic") by using Google's BERT
+1) Create lemmatized token vectors of sample occurrences of the pseudoword ("monetary/gothic") by using Google's BERT.
 ```python
 ipython WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 ```
