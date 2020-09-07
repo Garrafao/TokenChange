@@ -79,7 +79,7 @@ the `Data/` folder will contain the lemmatized [CCOHA2](https://www.ims.uni-stut
 
 In the following examples I will only use the lemmatized corpus and lemmatized test sentences (the ccoha corpora are available both, lemmatized and non-lemmatized). It is worth trying non-lemmatized test sentences, since BERT has achieved better results using non-lemmatized sentences in my thesis (see [this Bachelor Thesis](#bibtex)).
 
-Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too! The word2vec vocabulary only contains lemmatized words, so it can not be used on non-lemmatized test sentences.
+Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too! The word2vec vocabulary only contains lemmatized words????????????????????, so it can not be used on non-lemmatized test sentences.
 
 The BERT model can handle both, lemmatized and non-lemmatized test sentences.
 , just by changing the parameter "lemma" to "token".
