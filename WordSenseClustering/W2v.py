@@ -82,8 +82,8 @@ def main():
 
                 toMelt=[]
                 toMeltIDF=[]
-                lowerWindowSize = max(i-windowSize, 0)
-                upperWindowSize = min(i+windowSize, len(sentence))
+                lowerWindowSize = max(i-windowSize2, 0)
+                upperWindowSize = min(i+windowSize2, len(sentence))
                 window = sentence[lowerWindowSize:i] + sentence[i+1:upperWindowSize+1] 
                 if word in model.wv.vocab:
                     for contextWord in window:
