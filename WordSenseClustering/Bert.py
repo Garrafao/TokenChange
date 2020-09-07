@@ -25,7 +25,7 @@ def main():
     args = docopt("""
 
     Usage:
-        W2v.py  <pathTestSentences> <outPathVectors> <vecType> 
+        Bert.py  <pathTestSentences> <outPathVectors> <vecType> 
         
     Arguments:
        
