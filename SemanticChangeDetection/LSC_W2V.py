@@ -25,7 +25,7 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <clusteringInitialization> <pathResults> <limitAGL> <limitCOS> <limitCluster> <windowSize> <pathToW2i> <pathCorpora>
+        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <clusteringInitialization> <pathResults> <limitAGL> <limitCOS> <limitCluster> <windowSize> 
         
     Arguments:
        
@@ -39,8 +39,7 @@ def main():
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
         <limitCluster> = Minimum size of a cluster to be a cluster (Good is 5-10)
         <windowSize> = Window size for words to be in context of other words (Good is 20)
-        <pathToW2i> = Path to W2i
-        <pathCorpora> = Path to the corpora
+
 
 
     """)
@@ -55,8 +54,7 @@ def main():
     limitCOS = float(args['<limitCOS>'])
     limitCluster = int(args['<limitCluster>'])
     windowSize = int(args['<windowSize>'])
-    pathToW2i = args['<pathToW2i>']
-    pathCorpora = args['<pathCorpora>']
+
 
 
    
@@ -69,13 +67,13 @@ def main():
     
     #Create the vectors of corpora 1
     logging.critical("Create the vectors of corpora 1")
-    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences1 $pathToW2i $outPathVectors $windowSize $pathCorpora')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences1 $outPathVectors $windowSize')
     inSpace = Space(path=outPathVectors)
     vectors1=inSpace.matrix.toarray()
     
     #Createthe vectors of corpora 2
     logging.critical("Create the vectors of corpora 2")    
-    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences2 $pathToW2i $outPathVectors $windowSize $pathCorpora')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences2 $outPathVectors $windowSize')
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
    
