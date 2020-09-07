@@ -41,11 +41,11 @@ def main():
     Arguments:
        
         <pathVectors> = Path to the vectors
-        <pathTestSentences> = Path to the test sentecens that contain the gold clustering, if no accuracy is needed set to 0
+        <pathTestSentences> = Path to the test sentecens that contain the gold clustering, if no performance is needed set to 0
         <initializationType> = "gaac" for precalculated initialization, else random
         <numberClusters> = Number of desired clusters, if 0 than its calculated by sillhouette
         <outPathLabels> = Path to store the labels
-        <outPathResults> = path to store the accuracy in, if no accuracy is needed set to 0 
+        <outPathResults> = path to store the performance in, if no performance is needed set to 0 
     
     """)
     
