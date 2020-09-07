@@ -123,15 +123,15 @@ In this first example I will additionally explain what the parameters mean.
 
 1) Create a type vector for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction. 
 
-The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`), the type of sentences (`lemma`).
+The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`).
 ```python 
-ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy lemma
+ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 
 ```
 2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. 
 
-The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (`20`), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`).  
+The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (`20`), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).  
 ```python 
-ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
+ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz lemma
 ```
 3) Cluster the vectors and compare to expected clustering. 
 
