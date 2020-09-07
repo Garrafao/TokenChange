@@ -25,7 +25,7 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <clusteringInitialization> <pathResults> <limitAGL> <limitCOS> <limitCluster> <windowSize> 
+        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <clusteringInitialization> <pathResults> <limitAGL> <limitCOS> <limitCluster> <windowSize> <sentenceType> 
         
     Arguments:
        
@@ -39,6 +39,7 @@ def main():
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
         <limitCluster> = Minimum size of a cluster to be a cluster (Good is 5-10)
         <windowSize> = Window size for words to be in context of other words (Good is 20)
+        <sentenceType> = "lemma" or "token"
 
 
 
@@ -54,7 +55,7 @@ def main():
     limitCOS = float(args['<limitCOS>'])
     limitCluster = int(args['<limitCluster>'])
     windowSize = int(args['<windowSize>'])
-
+    sentenceType = args['<sentenceType>']
 
 
    
@@ -65,15 +66,16 @@ def main():
     start_time = time.time()    
     logging.critical("W2v LSC start")
     
+   
     #Create the vectors of corpora 1
     logging.critical("Create the vectors of corpora 1")
-    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences1 $outPathVectors $windowSize')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences1 $outPathVectors $windowSize $sentenceType')
     inSpace = Space(path=outPathVectors)
     vectors1=inSpace.matrix.toarray()
     
     #Createthe vectors of corpora 2
     logging.critical("Create the vectors of corpora 2")    
-    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences2 $outPathVectors $windowSize')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences2 $outPathVectors $windowSize $sentenceType')
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
    
