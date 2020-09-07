@@ -11,7 +11,7 @@ The first part of my bachelor thesis deals with the automatic analysis of the us
 First learn count-based (count+PPMI+SVD) type vectors from a corpus then sum up all type vectors that co-occur with the word use, using the words inverse document frequency (iDf) as weight, since it improves the result.  
 
 2. Pretrained type vectors from Google's word2vec:
-First download pre-trained word2vec (SGNS) type vectors, then sum up all type vectors that co-occur with the word use, using the words inverse document frequency as weight, since it improves the result.  
+First download pre-trained word2vec (SGNS) type vectors, then sum up all type vectors that co-occur with the word use.
 
 3. Pretrained token vectors from BERT:
 First download pre-trained BERT model, feed it with sentences and then extract token vectors. 
@@ -136,13 +136,9 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 
 ### Example word2vec: 
 
-1) Create a vector and its iDf value for each type of the CCOHA2 corpus by counting. The iDf values are needed. 
+1) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
 ```python 
-ipython WordSenseClustering/WordVectors.py count Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
-```
-2) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec, using their iDf value as weight.
-```python 
-ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
+ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 
 ```
 3) Cluster the vectors and compare to expected clustering.
 ```python
@@ -170,7 +166,7 @@ The scripts create token vectors for sentences of two time periods and cluster t
 
 ### Example word2vec:
 ```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20  Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz
+ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20 
 ```
 ### Example count-based: 
 ```python
