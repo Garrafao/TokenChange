@@ -28,13 +28,14 @@ def main():
     args = docopt("""
 
     Usage:
-        W2v.py  <pathTestSentences> <outPathVectors> <windowSize2> 
+        W2v.py  <pathTestSentences> <outPathVectors> <windowSize2> <sentenceType>
         
     Arguments:
        
         <pathTestSentences> = Path to the test sentences
         <outPathVectors> = Path for storing the vectors 
         <windowSize2> = Window size (20 works good)
+        <sentenceType> = "lemma" or "token"
     
     """)
     
@@ -42,12 +43,18 @@ def main():
     pathTestSentences = args['<pathTestSentences>']
     outPathVectors = args['<outPathVectors>']
     windowSize2 = int(args['<windowSize2>'])
+    sentenceType = args['<sentenceType>']
 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
     logging.critical("W2V start")
  
+    if sentenceType == "token":
+        sentType = "sentence_token"
+    else:
+        sentType = "sentence"
+        
     
     if not isinstance(windowSize2, int):
         windowSize2 = 20
@@ -72,7 +79,7 @@ def main():
     nonExisting=False
     #self.target=str(self.testSentences[0]["original_word"])        
     for dic in self.testSentences:
-        self.sentence = dic['sentence_token'].split()
+        self.sentence = dic[sentType].split()
         for i, word in enumerate(self.sentence):  
             if str(i) == dic['target_index']:
 
