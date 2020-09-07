@@ -114,20 +114,22 @@ pip install -r requirements.txt
 
 ## Example word sense clustering
 
-The first set of methods is for creating token vectors and applying word sense clustering to the uses of a specific word. The clustering performance scores will automatically be stored (mean adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the `WordSenseClustering/` folder.
+The first set of methods is for creating token vectors and applying word sense clustering to the token vectors. The clustering performance scores will automatically be stored (mean adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the `WordSenseClustering/` folder.
 
 
 ### Example count-based: 
 
-1) Create a type vector and the iDf value for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction.  
+In this first example I will additionally explain what the parameters mean.
+
+1) Create a type vector for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction. The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`)
 ```python 
 ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy
 ```
-2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight.
+2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (20), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`).  
 ```python 
 ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz
 ```
-3) Cluster the vectors and compare to expected clustering.
+3) Cluster the vectors and compare to expected clustering. The parameters are the path to the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path to the test sentences, in order to know the expected clustering (Data/monetary.csv), the initialization typ (`gaac`), the number of desired clusters (`2`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the path where to store the cluster performance scores (`Files/Clustering/cluster_scores.csv`).
 ```python 
 ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
