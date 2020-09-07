@@ -5,7 +5,7 @@ Repository containing code for [this Bachelor Thesis](#bibtex).
 ## Contents
 
 ### Word Sense Clustering
-The first part of my bachelor thesis deals with the automatic analysis of the usage of ambigous words. One way to understand the meaning of word uses is to create (token) vectors for each individual word use. Token vectors can be created in many different ways and in my work three different approaches are compared (for references refer to my thesis): 
+The first part of my bachelor thesis deals with the automatic analysis of the usage of ambiguous  words. One way to understand the meaning of word uses is to create (token) vectors for each individual word use. Token vectors can be created in many ways and in my work three different approaches are compared (for references refer to my thesis): 
 
 1. Self-trained, count-based type vectors:
 First learn count-based (count+PPMI+SVD) type vectors from a corpus then sum up all type vectors that co-occur with the word use, using the words inverse document frequency (iDf) as weight, since it improves the result.  
@@ -16,7 +16,7 @@ First download pre-trained word2vec (SGNS) type vectors, then sum up all type ve
 3. Pretrained token vectors from BERT:
 First download pre-trained BERT model, feed it with sentences and then extract token vectors. 
 
-After the creation of token vectors they can be clustered into clusters of uses with similar meanings. This is done here by first choosing the number of clusters using the Silhouette index and then applying K-means with the calculated number of clusters. In order to improve the clustering performance, the initial centroids of K-means are precalculated by applying Group-Average-Agglomerative-Clustering on a sample of vectors.
+After the creation of token vectors, they can be clustered into clusters of uses with similar meanings. This is done here by first choosing the number of clusters using the Silhouette index and then applying K-means with the calculated number of clusters. In order to improve the clustering performance, the initial centroids of K-means are precalculated by applying Group-Average-Agglomerative-Clustering on a sample of vectors.
 
 The performance of the clustering can be measured by comparing the expected (human-annotated) clustering labels with the actual clustering labels using the Mean Adjusted Rand Index and Cluster Accuracy.
 
@@ -25,7 +25,7 @@ The performance of the clustering can be measured by comparing the expected (hum
 
 Three different comparison measures are used for finding graded LSC values:
 
-1. Average pairiwse distance (APD): 
+1. Average pairwise distance (APD): 
 Given two lists of token vectors (one for each period of time), where one vector represents one use of the word in this period. The APD chooses a sample of vectors from both times and measures their average pairwise cosine distance. A high average distance between the two times indicates a change in the usage of the word.
 
 2. Cosine similarity (COS):
@@ -88,10 +88,10 @@ The test sentences should be stored in a csv file with the following values for 
 
 sentence: The lemmatized sentence. 
 target_index: The index of the target word in the sentence. 
-cluster: The expected cluster ID to which the word occurence belongs.
-original_word: In case of lemmatazation or pseudowords it is necessary to know what the original word was. 
+cluster: The expected cluster ID to which the word occurrence  belongs.
+original_word: In case of lemmatization or pseudowords it is necessary to know what the original word was. 
 sentence_token: The non-lemmatized sentence.
-sentence_pos: For each word its part-of-speach.
+sentence_pos: For each word its part-of-speech.
 
 ## External packages
 
@@ -127,7 +127,7 @@ The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2
 ```python 
 ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 
 ```
-2) Create token vectors for all occurences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. 
+2) Create token vectors for all occurrences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. 
 
 The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (`20`), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).  
 ```python 
@@ -135,7 +135,7 @@ ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix
 ```
 3) Cluster the vectors and compare to expected clustering. 
 
-The parameters are the path to the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path to the test sentences, in order to know the expected clustering (Data/monetary.csv), the initialization typ (`gaac`), the number of desired clusters (`2`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the path where to store the cluster performance scores (`Files/Clustering/cluster_scores.csv`).
+The parameters are the path to the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path to the test sentences, in order to know the expected clustering (Data/monetary.csv), the initialization type (`gaac`), the number of desired clusters (`2`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the path where to store the cluster performance scores (`Files/Clustering/cluster_scores.csv`).
 ```python 
 ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
@@ -144,7 +144,7 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 
 ### Example word2vec: 
 
-1) Create token vectors of sample occurences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
+1) Create token vectors of sample occurrences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
 ```python 
 ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 lemma 
 ```
@@ -158,7 +158,7 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 
 ### Example BERT:
 
-1) Create lemmatized token vectors of sample occurences of the pseudoword ("monetary/gothic") by using Google's BERT
+1) Create lemmatized token vectors of sample occurrences of the pseudoword ("monetary/gothic") by using Google's BERT
 ```python
 ipython WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 ```
