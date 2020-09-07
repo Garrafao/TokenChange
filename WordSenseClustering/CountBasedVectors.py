@@ -63,7 +63,7 @@ def main():
     #Load w2i
     w2i = np.load(pathw2i, allow_pickle='TRUE').item()
 
-        if sentenceType == "token":
+    if sentenceType == "token":
         sentType = "sentence_token"
     else:
         sentType = "sentence"
