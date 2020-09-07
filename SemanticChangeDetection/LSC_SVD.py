@@ -38,7 +38,7 @@ def main():
         <pathResults> = Path to store the lsc scores
         <limitAGL> = Change score limit for AGL to still be consiered as change (Good is about 0.2)
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
-        <limitCluster> = Minimum size of a cluster to be a cluster (Good is 5-10)
+        <limitCluster> = Minimum number of elements a cluster has to contain from one time and less from the other, to get assigned a change (Good is 5-10)
         <pathToMatrix> = Path to the first order matrix
         <pathW2i> = Path to W2i
         <windowSize> = Window size (Good is 20)
