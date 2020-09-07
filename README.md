@@ -147,7 +147,7 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 ```python 
 ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 lemma 
 ```
-3) Cluster the vectors and compare to expected clustering.
+2) Cluster the vectors and compare to expected clustering.
 ```python
 ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
@@ -160,7 +160,7 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 ```python
 ipython WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 ```
-3) Cluster the vectors and compare to expected clustering.
+2) Cluster the vectors and compare to expected clustering.
 ```python
 ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
 
