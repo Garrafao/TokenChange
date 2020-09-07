@@ -77,18 +77,17 @@ ipython import.py
 ```
 the `Data/` folder will contain the lemmatized and non-lemmatized  [CCOHA2 & CCOHA1](https://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/sem-eval-ulscd-eng/) corpora and a file that contains test sentences for the pseudoword "monetary/gothic". Please additionally download the [word2vec vectors](https://drive.google.com/uc?export=download&confirm=3aS5&id=0B7XkCwpI5KDYNlNUTTlSS21pQmM) and move the .bin file into the `Data/` folder.
 
-In the following examples I will only use the lemmatized corpus and lemmatized test sentences (the ccoha corpora are available both, lemmatized and non-lemmatized). It is worth trying non-lemmatized test sentences, since BERT has achieved better results using non-lemmatized sentences in my thesis (see [this Bachelor Thesis](#bibtex)).
+In the following examples I will only use the lemmatized corpus and lemmatized test sentences. It is worth trying non-lemmatized test sentences, since in my thesis BERT has achieved better results using non-lemmatized sentences.
 
 Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too! 
 
-The BERT model and the word2vec model can handle both, lemmatized and non-lemmatized test sentences.
-, just by changing the parameter "lemma" to "token".
+The BERT model and the word2vec model can handle both, lemmatized and non-lemmatized test sentences, just by changing the parameter "lemma" to "token".
 
 The test sentences should be stored in a csv file with the following values for each sentence: 
 
 sentence: The lemmatized sentence. 
 target_index: The index of the target word in the sentence. 
-cluster: The expected cluster ID to which the word occurrence  belongs.
+cluster: The expected cluster ID to which the word occurrence belongs.
 original_word: In case of lemmatization or pseudowords it is necessary to know what the original word was. 
 sentence_token: The non-lemmatized sentence.
 sentence_pos: For each word its part-of-speech.
