@@ -40,7 +40,7 @@ def main():
        
         <pathMatrix> = Path to the word vector matrix
         <pathTestSentences> = Path to the test sentences
-        <pathw2i> = <pathw2i>
+        <pathw2i> = Path to the word-to-index
         <outPathVectors> = Path for storing the vectors 
         <windowSize2> = Window size (20 works fine)
         <pathCorpus> = path to the corpus 
