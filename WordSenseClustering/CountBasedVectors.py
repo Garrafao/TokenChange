@@ -34,7 +34,7 @@ def main():
     args = docopt("""
 
     Usage:
-        CountBasedVectors.py  <pathMatrix> <pathTestSentences> <pathw2i> <outPathVectors> <windowSize2> <pathCorpus>
+        CountBasedVectors.py  <pathMatrix> <pathTestSentences> <pathw2i> <outPathVectors> <windowSize2> <pathCorpus> <sentenceType>
         
     Arguments:
        
@@ -44,7 +44,7 @@ def main():
         <outPathVectors> = Path for storing the vectors 
         <windowSize2> = Window size (20 works fine)
         <pathCorpus> = path to the corpus 
-    
+        <sentenceType> = "lemma" or "token"
     """)
     
     pathMatrix = args['<pathMatrix>']
@@ -53,6 +53,7 @@ def main():
     outPathVectors = args['<outPathVectors>']
     windowSize2 = int(args['<windowSize2>'])
     pathCorpus = args['<pathCorpus>']
+    sentenceType = args['<sentenceType>']
 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
@@ -62,12 +63,11 @@ def main():
     #Load w2i
     w2i = np.load(pathw2i, allow_pickle='TRUE').item()
 
-
-
-
-
-
-
+        if sentenceType == "token":
+        sentType = "sentence_token"
+    else:
+        sentType = "sentence"
+        
 
 
     #Load saved wordVectorMatrix
@@ -114,7 +114,7 @@ def main():
     nonExisting=False
     target=str(testSentences[0]["original_word"])        
     for dic in testSentences:
-        sentence = dic['sentence'].split()
+        sentence = dic[sentType].split()
         for i, word in enumerate(sentence):  
             if str(i) == dic['target_index'] and word == target:
                 toMelt=[]
