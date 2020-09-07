@@ -36,7 +36,7 @@ def main():
     args = docopt("""
 
     Usage:
-        count.py  <pathVectors> <pathTestSentences> <initializationType> <numberClusters> <outPathLabels> <outPathResults>
+        Clustering.py  <pathVectors> <pathTestSentences> <initializationType> <numberClusters> <outPathLabels> <outPathResults>
         
     Arguments:
        
