@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-# In[ ]:
 
 from scipy.spatial import distance
 import warnings
@@ -235,8 +234,5 @@ def jensen_shannon_distance(p, q):
     return distance
 
 
-    
-   
 if __name__ == '__main__':
     main()
-
