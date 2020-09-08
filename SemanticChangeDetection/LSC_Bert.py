@@ -15,7 +15,7 @@ import gzip
 import os 
 import random
 from utils_ import Space
-
+import sys
 import torch
 from transformers import BertTokenizer, BertModel
 
@@ -28,7 +28,7 @@ def main():
 
     Usage:
         LSC_Bert.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <vecType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster>
-        
+        LSC_Bert.py  <pathSentences1> <pathSentences2> <vecType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster>
     Arguments:
        
         <pathSentences1> = Path to the test sentences from time1
@@ -55,7 +55,11 @@ def main():
     limitCOS = float(args['<limitCOS>'])
     limitCluster = int(args['<limitCluster>'])
 
-
+    if len(sys.argv) == 8:
+        outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+        outPathLabels = "Files/Clustering/cluster_labels.csv"
+        outPathResults = "Files/LSC/lsc_scores.csv"
+       
     
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
@@ -99,8 +103,9 @@ def main():
     outSpace = Space(matrix = vectors, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
     #Cluster the combined vectors
-    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $clusteringInitialization 0 $outPathLabels 0')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $outPathLabels 0 $clusteringInitialization 0')
     
+   
     #Load list of labels
     labels=[]
     with open(outPathLabels , 'r') as file:
