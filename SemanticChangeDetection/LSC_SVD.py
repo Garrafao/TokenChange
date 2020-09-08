@@ -15,7 +15,7 @@ from sklearn import preprocessing
 import gzip
 import os 
 from utils_ import Space
-
+import sys
 
 
 
@@ -25,7 +25,10 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_SVD.py <pathToMatrix> <pathW2i> <pathCorpora> <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <sentenceType> <clusteringInitialization> <limitAGL> 
+        LSC_SVD.py c <pathCorpora> <pathSentences1> <pathSentences2> c <sentenceType> <clusteringInitialization> <limitAGL> 
+        <limitCOS> <limitCluster> <windowSize>  
+	
+        LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <limitAGL> 
         <limitCOS> <limitCluster> <windowSize>  
         
     Arguments:
@@ -44,10 +47,7 @@ def main():
         <limitCluster> = Minimum number of elements a cluster has to contain from one time and less from the other, to get assigned a change (Good is 5-10)
         <windowSize> = Window size (Good is 20)
 
-	
-        
-        
-        
+
 
     """)
     
@@ -66,8 +66,18 @@ def main():
     pathCorpora = args['<pathCorpora>']
     pathResults =  args['<pathResults>']
     sentenceType = args['<sentenceType>']
+	
+	
+	
+    if len(sys.argv) == 10:
+        outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+        outPathLabels = "Files/Clustering/cluster_labels.csv"
+        outPathResults = "Files/LSC/lsc_scores.csv"
+	pathToMatrix = "Files/Vectors/FirstOrder/matrix.npz"
+	pathW2i = "Files/Vectors/FirstOrder/w2i.npz.npy"
+	
 
-    
+
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
@@ -76,14 +86,16 @@ def main():
     #Create the vectors of corpora 1
     logging.critical("Create the vectors of corpora 1")
 
-    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences1 $pathW2i $outPathVectors $windowSize $pathCorpora $sentenceType')    
+    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathW2i $pathCorpora $pathSentences1 $outPathVectors $sentenceType $windowSize')    
  
+
+
     inSpace = Space(path=outPathVectors)
     vectors1=inSpace.matrix.toarray()
        
     #Create the vectors of corpora 2
     logging.critical("Create the vectors of corpora 2")    
-    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathSentences2 $pathW2i $outPathVectors $windowSize $pathCorpora $sentenceType')  
+    get_ipython().run_line_magic('run', 'WordSenseClustering/CountBasedVectors.py $pathToMatrix $pathW2i $pathCorpora $pathSentences2 $outPathVectors $sentenceType $windowSize')  
     inSpace = Space(path=outPathVectors)
     vectors2=inSpace.matrix.toarray()   
        
@@ -112,7 +124,7 @@ def main():
     outSpace = Space(matrix = vectors, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
     #Cluster the combined vectors
-    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $clusteringInitialization 0 $outPathLabels 0')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $outPathLabels 0 $clusteringInitialization 0')
     
     #Load list of labels
     labels=[]
