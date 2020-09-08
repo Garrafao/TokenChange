@@ -172,28 +172,16 @@ ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2
 ipython WordSenseClustering/Bert.py Data/monetary.csv lemma
 ```
 
-3) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
+2) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
 ```python
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
 ```
 
 
 ## Example lexical semantic change detection
-The scripts create token vectors for sentences from two time periods (based on the three presented token vector representations) and clusters them. It automatically saves the binary and graded semantic change scores in a file (`Files/LSC/lsc_scores.csv`). In this example both test sentences are identical, so the semantic change scores should be close to 0.0. 
+The scripts create token vectors for sentences from two time periods (based on the three presented token vector representations). It automatically calculates and saves the presented binary and graded semantic change scores in a file (`Files/LSC/lsc_scores.csv`). In this example both test sentences are identical, so the semantic change scores should be close to 0.0. (Note that for the count-based example, type vectors must be created first, like in [Type vectors](### Example count-based:))
 
 ### Example count-based: 
-
-In this first example I will again additionally explain what the parameters mean.
-
-1) Create a type vector for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction. 
-
-The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`).
-```python 
-ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd 
-```
-
-2) Create token vectors and calculated semantic change scores:
-The parameters are the path to the test sentences (`Data/monetary.csv`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the clustering initialization type (`gaac`), the path where to store the LSC scores (`Files/LSC/lsc_scores.csv`), the APD limit (`0.2`), the COS limit (`0.02`), the minimum number of elements a cluster contains from one time and not from the other time, to be considered a gain or loss of a sense (`10`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path where to store the word-to-index (`Files/Vectors/FirstOrder/w2i.npz.npy`), the window size for words to be in context of each other (`20`), the path to the corpus (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).
 ```python
 ipython SemanticChangeDetection/LSC_SVD.py Data/ccoha2.txt.gz Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10 20 
 ```
