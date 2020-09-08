@@ -184,12 +184,12 @@ ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/
 2) Create token vectors and calculated semantic change scores:
 The parameters are the path to the test sentences (`Data/monetary.csv`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the clustering initialization type (`gaac`), the path where to store the LSC scores (`Files/LSC/lsc_scores.csv`), the APD limit (`0.2`), the COS limit (`0.02`), the minimum number of elements a cluster contains from one time and not from the other time, to be considered a gain or loss of a sense (`10`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path where to store the word-to-index (`Files/Vectors/FirstOrder/w2i.npz.npy`), the window size for words to be in context of each other (`20`), the path to the corpus (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).
 ```python
-ipython SemanticChangeDetection/LSC_SVD.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 20 Data/ccoha2.txt.gz lemma
+ipython SemanticChangeDetection/LSC_SVD.py Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv Files/LSC/lsc_scores.csv lemma gaac 0.2 0.02 10 20 
 ```
 
 ### Example word2vec:
 ```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv gaac Files/LSC/lsc_scores.csv 0.2 0.02 10 20 lemma
+ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv Files/LSC/lsc_scores.csv lemma gaac 0.2 0.02 10 20 
 ```
 
 ### Example BERT:
