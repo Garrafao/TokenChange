@@ -1,14 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
-
-
-#!/usr/bin/env python
-# coding: utf-8
 import os 
-
-
 import warnings
 warnings.filterwarnings("ignore")
 from utils_ import Space
@@ -25,7 +18,6 @@ from scipy.spatial import distance
 from sklearn.metrics.cluster import adjusted_rand_score
 from sklearn.cluster import KMeans
 from sklearn.manifold import MDS
-from random import randint
 from sklearn.metrics import silhouette_samples, silhouette_score
 from sklearn import metrics
 from scipy.optimize import linear_sum_assignment
@@ -66,10 +58,6 @@ def main():
 	outPathLabels = "Files/Clustering/cluster_labels.csv"
 	outPathResults = "Files/Clustering/cluster_scores.csv"
 	
-	
-	
-    
-
 	
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
@@ -126,8 +114,6 @@ def main():
         #Calculate kmeans    
         centroid, label = kmeans2(loaded_contextVectorList_sparse.toarray(),
                                                         maxIndex , 5, minit='points')
-    
-
 
     if outPathResults != "0":
         filename = os.path.splitext(os.path.basename(pathTestSentences))[0]
@@ -139,9 +125,6 @@ def main():
             writer = csv.writer(file)
             writer.writerows([ADJ, ACC])    
 
-
-    
-        
         #Show results 
         print("")
         print(filename)
@@ -161,11 +144,7 @@ def main():
     logging.critical("--- %s seconds ---" % (time.time() - start_time))
     print("")
     
-    
-    
-    
-    
-    
+	
 #Calculates and returns the accuracy for two lists of labels    
 def cluster_accuracy(y_true, y_pred):
     # compute confusion matrix
@@ -174,10 +153,7 @@ def cluster_accuracy(y_true, y_pred):
     row_ind, col_ind = linear_sum_assignment(-contingency_matrix)
     #return result
     return contingency_matrix[row_ind, col_ind].sum() / np.sum(contingency_matrix)
-    
-
-
-    
+  
 
 #Calulates the clustering (labels) for given vectors and a number of desired clusters 
 def gaac(vectors, limit):
@@ -234,9 +210,6 @@ def gaac(vectors, limit):
     return [vector0[0], vector1[0]]
 
 
-
-
-
 def plotClusters(toCluster, gold, actual):
     embedding = MDS(n_components=2, metric=True, n_init=10, max_iter=500, random_state=100)
     X_transformed = embedding.fit_transform(toCluster)
@@ -268,9 +241,5 @@ def plotClusters(toCluster, gold, actual):
     plt.yticks([])
 
 
-
-
 if __name__ == '__main__':
     main()
-
-
