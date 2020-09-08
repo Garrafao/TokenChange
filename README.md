@@ -194,7 +194,7 @@ ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv F
 
 ### Example BERT:
 ```python
-ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv lemma gaac Files/LSC/lsc_scores.csv 0.2 0.02 10
+ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Fi-les/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv Fi-les/LSC/lsc_scores.csv lemma gaac 0.2 0.02 10
 ```
 
 
