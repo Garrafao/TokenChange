@@ -126,18 +126,40 @@ The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2
 ```python 
 ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 
 ```
+
+or short: 
+
+```python 
+ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz  
+```
+
+
+
 2) Create lemmatized token vectors for all occurrences of a pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, using their iDf value as weight. 
 
 The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (`20`), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).  
 ```python 
 ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz lemma
 ```
+
+or short
+
+```python 
+ipython WordSenseClustering/CountBasedVectors.py Data/monetary.csv 20 Data/ccoha2.txt.gz lemma
+```
+
+
 3) Cluster the vectors and compare to expected clustering. 
 
 The parameters are the path to the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path to the test sentences, in order to know the expected clustering (Data/monetary.csv), the initialization type (`gaac`), the number of desired clusters (`2`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the path where to store the cluster performance scores (`Files/Clustering/cluster_scores.csv`).
 ```python 
 ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
+```
 
+or short: 
+
+```python 
+ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 
 ```
 
 
@@ -147,10 +169,23 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 ```python 
 ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 lemma 
 ```
+
+or short: 
+
+```python 
+ipython WordSenseClustering/W2v.py Data/monetary.csv 20 lemma 
+```
+
+
 2) Cluster the vectors and compare to expected clustering.
 ```python
 ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
+```
 
+or short: 
+
+```python
+ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
 ```
 
 
@@ -160,10 +195,22 @@ ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz 
 ```python
 ipython WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
 ```
+
+or short: 
+
+```python
+ipython WordSenseClustering/Bert.py Data/monetary.csv lemma
+```
+
 2) Cluster the vectors and compare to expected clustering.
 ```python
 ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
+```
 
+or short: 
+
+```python
+ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
 ```
 
 
@@ -179,7 +226,13 @@ In this first example I will again additionally explain what the parameters mean
 The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`).
 ```python 
 ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 
-``` 
+```
+
+or short: 
+
+```python 
+ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz  
+```
 
 2) Create token vectors and calculated semantic change scores:
 The parameters are the path to the test sentences (`Data/monetary.csv`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the clustering initialization type (`gaac`), the path where to store the LSC scores (`Files/LSC/lsc_scores.csv`), the APD limit (`0.2`), the COS limit (`0.02`), the minimum number of elements a cluster contains from one time and not from the other time, to be considered a gain or loss of a sense (`10`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path where to store the word-to-index (`Files/Vectors/FirstOrder/w2i.npz.npy`), the window size for words to be in context of each other (`20`), the path to the corpus (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).
