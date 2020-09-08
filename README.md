@@ -136,7 +136,7 @@ pip install -r requirements.txt
 The first set of methods is for creating token vectors and applying word sense clustering to the token vectors. The clustering performance scores will automatically be stored (mean adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the `WordSenseClustering/` folder.
 
 
-### Example count-based: 
+### Count-based: 
 1) Create a type vector for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction. 
 ```python 
 ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd 
@@ -153,7 +153,7 @@ ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2
 ```
 
 
-### Example word2vec: 
+### Word2vec: 
 
 1) Create lemmatized token vectors of all occurrences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors in a window of size 20, given by Google's word2vec.
 ```python 
@@ -165,7 +165,7 @@ ipython WordSenseClustering/W2v.py Data/monetary.csv 20 lemma
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
 ```
 
-### Example BERT:
+### BERT:
 
 1) Create lemmatized token vectors of all occurrences of the pseudoword ("monetary/gothic") by using Google's BERT.
 ```python
@@ -181,18 +181,18 @@ ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2
 ## Example lexical semantic change detection
 The scripts create token vectors for sentences from two time periods (based on the three presented token vector representations). It automatically calculates and saves the presented binary and graded semantic change scores in a file (`Files/LSC/lsc_scores.csv`). In this example both test sentences are identical, so the semantic change scores should be close to 0.0. (Note that for the count-based example, type vectors must be created first, like above)
 
-### Example count-based: 
+### Count-based: 
 ```python
 ipython SemanticChangeDetection/LSC_SVD.py Data/ccoha2.txt.gz Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10 20 
 ```
 
-### Example word2vec:
+### Word2vec:
 ```python
 ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10 20 
 ```
 
 
-### Example BERT:
+### BERT:
 ```python
 ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10
 ```
