@@ -29,6 +29,8 @@ from random import randint
 from sklearn.metrics import silhouette_samples, silhouette_score
 from sklearn import metrics
 from scipy.optimize import linear_sum_assignment
+import sys
+
 
 def main():
 
@@ -37,6 +39,7 @@ def main():
 
     Usage:
         Clustering.py  <pathVectors> <pathTestSentences> <outPathLabels> <outPathResults> <initializationType> <numberClusters> 
+        Clustering.py  <pathTestSentences> <initializationType> <numberClusters> 
         
     Arguments:
        
@@ -57,6 +60,17 @@ def main():
     outPathLabels = args['<outPathLabels>']
     outPathResults = args['<outPathResults>']
     
+	
+    if len(sys.argv) == 4:
+	pathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+	outPathLabels = "Files/Clustering/cluster_labels.csv"
+	outPathResults = "Files/Clustering/cluster_scores.csv"
+	
+	
+	
+    
+
+	
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()  
