@@ -29,6 +29,7 @@ def main():
 
     Usage:
         W2v.py  <pathTestSentences> <outPathVectors> <windowSize2> <sentenceType>
+        W2v.py  <pathTestSentences> <windowSize2> <sentenceType>
         
     Arguments:
        
@@ -45,6 +46,11 @@ def main():
     windowSize2 = int(args['<windowSize2>'])
     sentenceType = args['<sentenceType>']
 
+    if len(args) == 3:
+        outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+        
+    
+    
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
