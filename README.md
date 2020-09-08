@@ -153,7 +153,7 @@ ipython WordSenseClustering/CountBasedVectors.py Data/ccoha2.txt.gz Data/monetar
 
 The parameters are the path to the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path to the test sentences, in order to know the expected clustering (Data/monetary.csv), the initialization type (`gaac`), the number of desired clusters (`2`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the path where to store the cluster performance scores (`Files/Clustering/cluster_scores.csv`).
 ```python 
-ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
+ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv gaac 2 
 ```
 
 or short: 
@@ -178,8 +178,8 @@ ipython WordSenseClustering/W2v.py Data/monetary.csv 20 lemma
 
 
 2) Cluster the vectors and compare to expected clustering.
-```python
-ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
+```python 
+ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv gaac 2 
 ```
 
 or short: 
@@ -203,8 +203,8 @@ ipython WordSenseClustering/Bert.py Data/monetary.csv lemma
 ```
 
 2) Cluster the vectors and compare to expected clustering.
-```python
-ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv gaac 2 Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv
+```python 
+ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv gaac 2 
 ```
 
 or short: 
