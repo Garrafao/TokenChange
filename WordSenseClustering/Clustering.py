@@ -36,16 +36,17 @@ def main():
     args = docopt("""
 
     Usage:
-        Clustering.py  <pathVectors> <pathTestSentences> <initializationType> <numberClusters> <outPathLabels> <outPathResults>
+        Clustering.py  <pathVectors> <pathTestSentences> <outPathLabels> <outPathResults> <initializationType> <numberClusters> 
         
     Arguments:
        
         <pathVectors> = Path to the vectors
         <pathTestSentences> = Path to the test sentecens that contain the gold clustering, if no performance is needed set to 0
+	<outPathLabels> = Path to store the labels
+        <outPathResults> = path to store the performance in, if no performance is needed set to 0 
         <initializationType> = "gaac" for precalculated initialization, else random
         <numberClusters> = Number of desired clusters, if 0 than its calculated by sillhouette
-        <outPathLabels> = Path to store the labels
-        <outPathResults> = path to store the performance in, if no performance is needed set to 0 
+
     
     """)
     
