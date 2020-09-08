@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 import warnings
 warnings.filterwarnings("ignore") 
 from docopt import docopt
@@ -12,7 +10,6 @@ import numpy as np
 import csv
 from sklearn import preprocessing
 from utils_ import Space
-import gzip
 import gzip
 import math
 from utils_ import Space
@@ -102,10 +99,6 @@ def main():
                     contextVectorList.append(np.zeros(300))
 
 
-    
-
-
-
     #Normalize vectors in length
     contextVectorList=preprocessing.normalize(contextVectorList, norm='l2')
 
@@ -118,17 +111,11 @@ def main():
     print("")
    
 
-    
-
 #Method that has as input a list of vectors and outputs the sum of the vectors
 def getContextVector(toMeltList):
     centroid = lambda inp: [[sum(m) for m in zip(*l)] for l in inp]
     return centroid([toMeltList])[0] 
         
     
-
 if __name__ == '__main__':
     main()
-
-    
-
