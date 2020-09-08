@@ -24,22 +24,22 @@ def main():
     args = docopt("""
 
     Usage:
-        WordVectors.py  <representation> <pathCorpus> <outPathVectors> <outPathw2i>
+        WordVectors.py <pathCorpus> <outPathVectors> <outPathw2i> <representation>   
         
     Arguments:
        
-        <representation> = Either "count", "ppmi" or "svd"
+        
         <pathCorpus> = Path to the corpus
         <outPathVectors> = Path for storing the vectors 
         <outPathw2i> = Path for storing w2i
-    
+        <representation> = Either "count", "ppmi" or "svd"
     """)
     
-    representation = args['<representation>']
+
     pathCorpus = args['<pathCorpus>']
     outPathVectors = args['<outPathVectors>']
     outPathw2i = args['<outPathw2i>']
-
+    representation = args['<representation>']
     
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
