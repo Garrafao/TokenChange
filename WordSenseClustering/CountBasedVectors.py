@@ -34,17 +34,19 @@ def main():
     args = docopt("""
 
     Usage:
-        CountBasedVectors.py  <pathMatrix> <pathTestSentences> <pathw2i> <outPathVectors> <windowSize2> <pathCorpus> <sentenceType>
+        CountBasedVectors.py  <pathMatrix> <pathw2i> <pathCorpus> <pathTestSentences> <outPathVectors> <sentenceType> <windowSize2> 
         
     Arguments:
        
         <pathMatrix> = Path to the word vector matrix
-        <pathTestSentences> = Path to the test sentences
         <pathw2i> = Path to the word-to-index
-        <outPathVectors> = Path for storing the vectors 
-        <windowSize2> = Window size (20 works fine)
         <pathCorpus> = path to the corpus 
+        <pathTestSentences> = Path to the test sentences
+        <outPathVectors> = Path for storing the vectors
         <sentenceType> = "lemma" or "token"
+        <windowSize2> = Window size (20 works fine)
+        
+        
     """)
     
     pathMatrix = args['<pathMatrix>']
