@@ -16,7 +16,7 @@ import time
 import numpy as np
 import gzip
 import math
-
+import sys
 
 def main():
 
@@ -24,7 +24,9 @@ def main():
     args = docopt("""
 
     Usage:
-        WordVectors.py <pathCorpus> <outPathVectors> <outPathw2i> <representation>   
+        WordVectors.py <pathCorpus> <outPathVectors> <outPathw2i> <representation> 
+        WordVectors.py <pathCorpus> <representation>
+        
         
     Arguments:
        
@@ -40,6 +42,16 @@ def main():
     outPathVectors = args['<outPathVectors>']
     outPathw2i = args['<outPathw2i>']
     representation = args['<representation>']
+    
+    
+
+    if len(sys.argv) == 3:
+        outPathVectors = "Files/Vectors/FirstOrder/matrix.npz"
+        outPathw2i = "Files/Vectors/FirstOrder/w2i.npz.npy"   
+    
+     
+    
+    
     
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
