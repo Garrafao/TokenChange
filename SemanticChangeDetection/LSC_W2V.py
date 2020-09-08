@@ -15,7 +15,7 @@ import gzip
 import os 
 import random
 from utils_ import Space
-
+import sys
 
 
 
@@ -25,8 +25,9 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <outPathResults> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
-        
+        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>
+        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
+    
     Arguments:
        
         <pathSentences1> = Path to the test sentences from time1
@@ -58,8 +59,12 @@ def main():
     windowSize = int(args['<windowSize>'])
     sentenceType = args['<sentenceType>']
 
+    if len(sys.argv) == 8:
+        outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+        outPathLabels = "Files/Clustering/cluster_labels.csv"
+        outPathResults = "Files/LSC/lsc_scores.csv"
+       
 
-   
 
     
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
@@ -71,6 +76,7 @@ def main():
     #Create the vectors of corpora 1
     logging.critical("Create the vectors of corpora 1")
     get_ipython().run_line_magic('run', 'WordSenseClustering/W2v.py $pathSentences1 $outPathVectors $windowSize $sentenceType')
+
     inSpace = Space(path=outPathVectors)
     vectors1=inSpace.matrix.toarray()
     
@@ -105,7 +111,7 @@ def main():
     outSpace = Space(matrix = vectors, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
     #Cluster the combined vectors
-    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $clusteringInitialization 0 $outPathLabels 0')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $outPathLabels 0 $clusteringInitialization 0')
     
     
     #Load list of labels
