@@ -179,7 +179,7 @@ ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2
 
 
 ## Example lexical semantic change detection
-The scripts create token vectors for sentences from two time periods (based on the three presented token vector representations). It automatically calculates and saves the presented binary and graded semantic change scores in a file (`Files/LSC/lsc_scores.csv`). In this example both test sentences are identical, so the semantic change scores should be close to 0.0. (Note that for the count-based example, type vectors must be created first, like in [Type vectors](### Example count-based:))
+The scripts create token vectors for sentences from two time periods (based on the three presented token vector representations). It automatically calculates and saves the presented binary and graded semantic change scores in a file (`Files/LSC/lsc_scores.csv`). In this example both test sentences are identical, so the semantic change scores should be close to 0.0. (Note that for the count-based example, type vectors must be created first, like in [Type vectors](### Example count-based))
 
 ### Example count-based: 
 ```python
