@@ -17,9 +17,6 @@ from sklearn.cluster import KMeans
 from sklearn import metrics
 import math 
 from utils_ import Space
-import count
-import ppmi
-import svd
 import sys
 
 def main():
