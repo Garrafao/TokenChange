@@ -124,13 +124,13 @@ In this first example I will additionally explain what the parameters mean.
 
 The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`).
 ```python 
-ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 
+ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy svd
 ```
 
 or short: 
 
 ```python 
-ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz  
+ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd 
 ```
 
 
@@ -139,13 +139,13 @@ ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz
 
 The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (`20`), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).  
 ```python 
-ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Data/monetary.csv Files/Vectors/FirstOrder/w2i.npz.npy Files/Vectors/SecondOrder/Vectors.npz 20 Data/ccoha2.txt.gz lemma
+ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz Data/monetary.csv  Files/Vectors/SecondOrder/Vectors.npz lemma 20 
 ```
 
 or short
 
 ```python 
-ipython WordSenseClustering/CountBasedVectors.py Data/monetary.csv 20 Data/ccoha2.txt.gz lemma
+ipython WordSenseClustering/CountBasedVectors.py Data/ccoha2.txt.gz Data/monetary.csv lemma 20 
 ```
 
 
@@ -225,13 +225,13 @@ In this first example I will again additionally explain what the parameters mean
 
 The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`).
 ```python 
-ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy 
+ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy svd 
 ```
 
 or short: 
 
 ```python 
-ipython WordSenseClustering/WordVectors.py svd Data/ccoha2.txt.gz  
+ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd 
 ```
 
 2) Create token vectors and calculated semantic change scores:
