@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-# In[ ]:
 
 from scipy.spatial import distance
 import warnings
@@ -16,8 +15,6 @@ import os
 import random
 from utils_ import Space
 import sys
-
-
 
 def main():
 
@@ -42,7 +39,6 @@ def main():
         <limitCluster> = Minimum number of elements a cluster has to contain from one time and less from the other, to get assigned a change (Good is 5-10)
         <windowSize> = Window size for words to be in context of other words (Good is 20)
         
-
 
 
     """)
@@ -242,8 +238,5 @@ def jensen_shannon_distance(p, q):
 
 
     
-    
-    
 if __name__ == '__main__':
     main()
-
