@@ -123,11 +123,6 @@ In this first example I will additionally explain what the parameters mean.
 1) Create a type vector for each word type of the CCOHA2 corpus by counting and applying PPMI and SVD reduction. 
 
 The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`).
-```python 
-ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy svd
-```
-
-or short: 
 
 ```python 
 ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd 
@@ -139,12 +134,6 @@ ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd
 
 The parameters are the path to the stored type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path to the file that contains the file to the test sentences (`Data/monetary.csv`), the path to the stored word-to-index file (`Files/Vectors/FirstOrder/w2i.npz.npy`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the window size for words to be in context of each other (`20`), the path to the corpus, in order to calculate the iDf values (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).  
 ```python 
-ipython WordSenseClustering/CountBasedVectors.py Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz Data/monetary.csv  Files/Vectors/SecondOrder/Vectors.npz lemma 20 
-```
-
-or short
-
-```python 
 ipython WordSenseClustering/CountBasedVectors.py Data/ccoha2.txt.gz Data/monetary.csv lemma 20 
 ```
 
@@ -152,12 +141,6 @@ ipython WordSenseClustering/CountBasedVectors.py Data/ccoha2.txt.gz Data/monetar
 3) Cluster the vectors and compare to expected clustering. 
 
 The parameters are the path to the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path to the test sentences, in order to know the expected clustering (Data/monetary.csv), the initialization type (`gaac`), the number of desired clusters (`2`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the path where to store the cluster performance scores (`Files/Clustering/cluster_scores.csv`).
-```python 
-ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv gaac 2 
-```
-
-or short: 
-
 ```python 
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 
 ```
@@ -167,48 +150,22 @@ ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2
 
 1) Create lemmatized token vectors of sample occurrences of the pseudoword ("monetary/gothic") by summing up all co-occurring type vectors, given by Google's word2vec.
 ```python 
-ipython WordSenseClustering/W2v.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz 20 lemma 
-```
-
-or short: 
-
-```python 
 ipython WordSenseClustering/W2v.py Data/monetary.csv 20 lemma 
 ```
 
-
 2) Cluster the vectors and compare to expected clustering.
-```python 
-ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv gaac 2 
-```
-
-or short: 
-
 ```python
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
 ```
-
 
 ### Example BERT:
 
 1) Create lemmatized token vectors of sample occurrences of the pseudoword ("monetary/gothic") by using Google's BERT.
 ```python
-ipython WordSenseClustering/Bert.py Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz lemma
-```
-
-or short: 
-
-```python
 ipython WordSenseClustering/Bert.py Data/monetary.csv lemma
 ```
 
 2) Cluster the vectors and compare to expected clustering.
-```python 
-ipython WordSenseClustering/Clustering.py Files/Vectors/SecondOrder/Vectors.npz Data/monetary.csv Files/Clustering/cluster_labels.csv Files/Clustering/cluster_scores.csv gaac 2 
-```
-
-or short: 
-
 ```python
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
 ```
@@ -225,33 +182,16 @@ In this first example I will again additionally explain what the parameters mean
 
 The parameters are the vector type (`svd`), the path to the corpus (`Data/ccoha2.txt.gz`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`) and the path where to store the word-to-index-dictionary (`Files/Vectors/FirstOrder/w2i.npz.npy`).
 ```python 
-ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy svd 
-```
-
-or short: 
-
-```python 
 ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd 
 ```
 
 2) Create token vectors and calculated semantic change scores:
 The parameters are the path to the test sentences (`Data/monetary.csv`), the path where to store the token vectors (`Files/Vectors/SecondOrder/Vectors.npz`), the path where to store the actual clustering labels (`Files/Clustering/cluster_labels.csv`), the clustering initialization type (`gaac`), the path where to store the LSC scores (`Files/LSC/lsc_scores.csv`), the APD limit (`0.2`), the COS limit (`0.02`), the minimum number of elements a cluster contains from one time and not from the other time, to be considered a gain or loss of a sense (`10`), the path where to store the type vectors (`Files/Vectors/FirstOrder/matrix.npz`), the path where to store the word-to-index (`Files/Vectors/FirstOrder/w2i.npz.npy`), the window size for words to be in context of each other (`20`), the path to the corpus (`Data/ccoha2.txt.gz`), the type of sentences (`lemma`).
 ```python
-ipython SemanticChangeDetection/LSC_SVD.py Files/Vectors/FirstOrder/matrix.npz Files/Vectors/FirstOrder/w2i.npz.npy Data/ccoha2.txt.gz Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv Files/LSC/lsc_scores.csv lemma gaac 0.2 0.02 10 20 
-```
-
-or short: 
-
-```python
 ipython SemanticChangeDetection/LSC_SVD.py Data/ccoha2.txt.gz Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10 20 
 ```
 
 ### Example word2vec:
-```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv Files/LSC/lsc_scores.csv lemma gaac 0.2 0.02 10 20 
-```
-
-or short: 
 ```python
 ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10 20 
 ```
@@ -259,15 +199,8 @@ ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv l
 
 ### Example BERT:
 ```python
-ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv Files/Vectors/SecondOrder/Vectors.npz Files/Clustering/cluster_labels.csv Fi-les/LSC/lsc_scores.csv lemma gaac 0.2 0.02 10
-```
-
-or short: 
-
-```python
 ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10
 ```
-
 
 
 BibTex
