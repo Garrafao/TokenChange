@@ -27,7 +27,7 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_Bert.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <vecType> <clusteringInitialization> <pathResults> <limitAGL> <limitCOS> <limitCluster>
+        LSC_Bert.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <vecType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster>
         
     Arguments:
        
@@ -35,9 +35,9 @@ def main():
         <pathSentences2> = Path to the test sentences from time2
         <outPathVectors> = Path to store the vectors
         <outPathLabels> = Path to store the clustering labels
+        <outPathResults> = Path to store the lsc scores
         <vecType> = Type of vector representation: "token" or "lemma"
         <clusteringInitialization> = "gaac" for precalculated initializations, else random
-        <pathResults> = Path to store the lsc scores
         <limitAGL> = Change score limit for AGL to still be consiered as change (Good is about 0.2)
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
         <limitCluster> = Minimum number of elements a cluster has to contain from one time and less from the other, to get assigned a change (Good is 5-10)
@@ -50,7 +50,7 @@ def main():
     outPathLabels = args['<outPathLabels>']
     vecType = args['<vecType>']
     clusteringInitialization = args['<clusteringInitialization>']
-    pathResults = args['<pathResults>']    
+    pathResults = args['<outPathResults>']    
     limitAGL = float(args['<limitAGL>'])
     limitCOS = float(args['<limitCOS>'])
     limitCluster = int(args['<limitCluster>'])
