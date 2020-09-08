@@ -71,15 +71,20 @@ We recommend you to run the scripts within a [virtual environment](https://pypi.
 All scripts can be run in two different ways. The first is with all parameters, including all paths for storing the results and vectors, and the second is with only the essential parameters, where the locations are fixed. I recommend to use the shortened version (so will I do in the following examples), since it is much more understandable. In the shortened version the following locations are  used: 
 
 For storing all cluster labels:
-`Files/Clustering/cluster_labels.csv` 
+`Files/Clustering/cluster_labels.csv`
+
 For storing all cluster performance scores:
 `Files/Clustering/cluster_scores.csv` 
+
 For storing all LSC scores:
 `Files/LSC/lsc_scores.csv` 
+
 For storing count-based type vectors:
 `Files/LSC/FirstOrder/matrix.npz` 
+
 For storing the word-to-index dictionary:
 `Files/LSC/FirstOrder/w2i.npz.npy`  
+
 For storing the token vectors:
 `Files/LSC/SecondOrder/Vectors.npz`  
 
