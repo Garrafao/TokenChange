@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-# In[34]:
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -8,18 +7,13 @@ from docopt import docopt
 import logging
 import time
 from scipy.cluster.vq import kmeans2
-import matplotlib.pyplot as plt
 import numpy as np
 import csv
 from sklearn import preprocessing
-from utils_ import Space
 import gzip
-from scipy.spatial import distance
-import random
 from scipy.spatial import distance
 from sklearn.metrics.cluster import adjusted_rand_score
 from sklearn.cluster import KMeans
-from random import randint
 from sklearn import metrics
 import math 
 from utils_ import Space
@@ -64,10 +58,7 @@ def main():
         pathw2i = "Files/Vectors/FirstOrder/w2i.npz.npy"
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         
-        
 
-    
-    
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
@@ -82,9 +73,7 @@ def main():
         sentType = "sentence"
         
 
-
     #Load saved wordVectorMatrix
-
     try:
         inSpace =  Space(path=pathMatrix, format='w2v')
     except UnicodeDecodeError:
@@ -159,8 +148,6 @@ def main():
     logging.critical("--- %s seconds ---" % (time.time() - start_time))
     print("")
    
-
-    
     
 #Method that has as input a list of vectors and outputs the sum of the vectors
 def getContextVector(toMeltList):
@@ -168,7 +155,5 @@ def getContextVector(toMeltList):
     return centroid([toMeltList])[0] 
         
     
-
 if __name__ == '__main__':
     main()
-
