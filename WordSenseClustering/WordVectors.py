@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-import sys
-sys.path.append('./modules/')
 
 import svd
 import ppmi
 import count
 from utils_ import Space
-
 import os
 import warnings
 warnings.filterwarnings("ignore")
@@ -48,11 +45,8 @@ def main():
     if len(sys.argv) == 3:
         outPathVectors = "Files/Vectors/FirstOrder/matrix.npz"
         outPathw2i = "Files/Vectors/FirstOrder/w2i.npz.npy"   
-    
-     
-    
-    
-    
+ 
+
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
