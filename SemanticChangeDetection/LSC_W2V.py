@@ -25,7 +25,7 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <clusteringInitialization> <pathResults> <limitAGL> <limitCOS> <limitCluster> <windowSize> <sentenceType> 
+        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <outPathResults> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
         
     Arguments:
        
@@ -33,13 +33,14 @@ def main():
         <pathSentences2> = Path to the test sentences from time2
         <outPathVectors> = Path to store the vectors
         <outPathLabels> = Path to store the clustering labels
+        <outPathResults> = Path to store the lsc scores
+        <sentenceType> = "lemma" or "token"
         <clusteringInitialization> = "gaac" for precalculated initializations, else random
-        <pathResults> = Path to store the lsc scores
         <limitAGL> = Change score limit for AGL to still be consiered as change (Good is about 0.2)
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
         <limitCluster> = Minimum number of elements a cluster has to contain from one time and less from the other, to get assigned a change (Good is 5-10)
         <windowSize> = Window size for words to be in context of other words (Good is 20)
-        <sentenceType> = "lemma" or "token"
+        
 
 
 
@@ -50,7 +51,7 @@ def main():
     outPathVectors = args['<outPathVectors>']
     outPathLabels = args['<outPathLabels>']
     clusteringInitialization = args['<clusteringInitialization>']
-    pathResults = args['<pathResults>']
+    pathResults = args['<outPathResults>']
     limitAGL = float(args['<limitAGL>'])
     limitCOS = float(args['<limitCOS>'])
     limitCluster = int(args['<limitCluster>'])
