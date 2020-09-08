@@ -12,7 +12,7 @@ import numpy as np
 import csv
 from sklearn import preprocessing
 import gzip
-
+import sys
 from utils_ import Space
 
 import torch
@@ -26,6 +26,7 @@ def main():
 
     Usage:
         Bert.py  <pathTestSentences> <outPathVectors> <vecType> 
+        Bert.py  <pathTestSentences> <vecType>
         
     Arguments:
        
@@ -38,6 +39,11 @@ def main():
     pathTestSentences = args['<pathTestSentences>']
     outPathVectors = args['<outPathVectors>']
     vecType = args['<vecType>']
+    
+    
+    if len(sys.argv) == 3:
+        outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+   
     
 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
