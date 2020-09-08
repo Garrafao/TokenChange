@@ -26,7 +26,7 @@ from utils_ import Space
 import count
 import ppmi
 import svd
-
+import sys
 
 def main():
 
@@ -35,6 +35,7 @@ def main():
 
     Usage:
         CountBasedVectors.py  <pathMatrix> <pathw2i> <pathCorpus> <pathTestSentences> <outPathVectors> <sentenceType> <windowSize2> 
+        CountBasedVectors.py  <pathCorpus> <pathTestSentences> <sentenceType> <windowSize2>
         
     Arguments:
        
@@ -57,6 +58,16 @@ def main():
     pathCorpus = args['<pathCorpus>']
     sentenceType = args['<sentenceType>']
 
+    
+    if len(sys.argv) == 5:
+        pathMatrix = "Files/Vectors/FirstOrder/matrix.npz"
+        pathw2i = "Files/Vectors/FirstOrder/w2i.npz.npy"
+        outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+        
+        
+
+    
+    
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
