@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 import warnings
 warnings.filterwarnings("ignore") 
 from docopt import docopt
@@ -14,7 +12,6 @@ from sklearn import preprocessing
 import gzip
 import sys
 from utils_ import Space
-
 import torch
 from transformers import BertTokenizer, BertModel
 
