@@ -16,7 +16,7 @@ import gzip
 import gzip
 import math
 from utils_ import Space
-
+import sys
 import gensim
 
 
@@ -46,11 +46,10 @@ def main():
     windowSize2 = int(args['<windowSize2>'])
     sentenceType = args['<sentenceType>']
 
-    if len(args) == 3:
+    if len(sys.argv) == 4:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         
-    
-    
+ 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
