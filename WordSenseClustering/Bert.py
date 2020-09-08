@@ -41,14 +41,12 @@ def main():
     if len(sys.argv) == 3:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
    
-    
-
+   
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()    
     logging.critical("Bert start")
  
-    
     
     #Load TestSentences 
     # Load pre-trained model tokenizer (vocabulary)
@@ -128,9 +126,6 @@ def main():
     logging.critical("--- %s seconds ---" % (time.time() - start_time))
     print("")
 
-   
-
-    
 
 #Method that has as input a list of vectors and outputs the sum of the vectors
 def getContextVector(toMeltList):
@@ -138,7 +133,5 @@ def getContextVector(toMeltList):
     return centroid([toMeltList])[0] 
         
     
-
 if __name__ == '__main__':
     main()
-
