@@ -16,7 +16,7 @@ First download pre-trained word2vec (SGNS) type vectors, then sum up all type ve
 3. Pretrained token vectors from BERT:
 First download pre-trained BERT model, feed it with sentences and then extract token vectors. 
 
-After the creation of token vectors, they can be clustered into clusters of uses with similar meanings. This is done here by first choosing the number of clusters using the Silhouette index and then applying K-means or Hierarchical Clustering with the calculated number of clusters. In order to improve the clustering performance of K-means, the initial centroids of K-means can be precalculated by applying Group-Average-Agglomerative-Clustering on a sample of vectors.
+After the creation of token vectors, they can be clustered into clusters of uses with similar meanings. This is done here by first choosing the number of clusters using the Silhouette index and then applying K-means or Hierarchical Clustering with the calculated number of clusters. In order to improve the clustering performance of K-means, the initial centroids of K-means can be precalculated by applying Group-Average-Agglomerative-Clustering on a sample of 50 vectors.
 
 The performance of the clustering can be measured by comparing the expected (human-annotated) clustering labels with the actual clustering labels using the Mean Adjusted Rand Index and Cluster Accuracy.
 
