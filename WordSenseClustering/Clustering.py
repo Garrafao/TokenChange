@@ -22,7 +22,7 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 from sklearn import metrics
 from scipy.optimize import linear_sum_assignment
 import sys
-
+from sklearn.cluster import AgglomerativeClustering
 
 def main():
 
@@ -30,8 +30,8 @@ def main():
     args = docopt("""
 
     Usage:
-        Clustering.py  <pathVectors> <pathTestSentences> <outPathLabels> <outPathResults> <initializationType> <numberClusters> 
-        Clustering.py  <pathTestSentences> <initializationType> <numberClusters> 
+        Clustering.py  <pathVectors> <pathTestSentences> <outPathLabels> <outPathResults> <initializationType> <numberClusters> <clustering> 
+        Clustering.py  <pathTestSentences> <initializationType> <numberClusters> <clustering>
         
     Arguments:
        
@@ -39,8 +39,9 @@ def main():
         <pathTestSentences> = Path to the test sentecens that contain the gold clustering, if no performance is needed set to 0
         <outPathLabels> = Path to store the labels
         <outPathResults> = path to store the performance in, if no performance is needed set to 0 
-        <initializationType> = "gaac" for precalculated initialization, else random
+        <initializationType> = "gaac" for precalculated initialization, else random. (Only for kmeans used)
         <numberClusters> = Number of desired clusters, if 0 than its calculated by sillhouette
+        <clustering> = Either "hierarchical" or "kmeans"
 
     
     """)
@@ -51,9 +52,10 @@ def main():
     numberClusters = int(args['<numberClusters>'])
     outPathLabels = args['<outPathLabels>']
     outPathResults = args['<outPathResults>']
+    clustering = args['<clustering>']
     
 
-    if len(sys.argv) == 4:
+    if len(sys.argv) == 5:
         pathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         outPathLabels = "Files/Clustering/cluster_labels.csv"
         outPathResults = "Files/Clustering/cluster_scores.csv"
@@ -91,28 +93,34 @@ def main():
             if maxValue <=silhouette_avg:
                 maxValue=silhouette_avg
                 maxIndex=n_clusters
-    else:
-        maxIndex=numberClusters
+            numberClusters = maxIndex
+
       
     
-    if initializationType == "gaac":
-
-        #Calculate GAAC on sample vectors for initial centroids
-        testList=[]
-        size = min(len(loaded_contextVectorList_sparse.toarray()), 50 )
-        randoms=random.sample(range(0, len(loaded_contextVectorList_sparse.toarray())), size)
-        for i in randoms: 
-            testList.append(loaded_contextVectorList_sparse[i].toarray()[0])   
-        initialCentroids=preprocessing.normalize(gaac(testList, maxIndex), norm='l2')
-
-        #Calculate kmeans    
-        centroid, label = kmeans2(loaded_contextVectorList_sparse.toarray(),
-                                                        initialCentroids , 5, minit='matrix')
-
+    if clustering == "hierarchical":
+        clustering = AgglomerativeClustering(n_clusters=numberClusters).fit(loaded_contextVectorList_sparse.toarray())
+        label=clustering.labels_        
+    
     else:
-        #Calculate kmeans    
-        centroid, label = kmeans2(loaded_contextVectorList_sparse.toarray(),
-                                                        maxIndex , 5, minit='points')
+        
+        if initializationType == "gaac":
+
+            #Calculate GAAC on sample vectors for initial centroids
+            testList=[]
+            size = min(len(loaded_contextVectorList_sparse.toarray()), 50 )
+            randoms=random.sample(range(0, len(loaded_contextVectorList_sparse.toarray())), size)
+            for i in randoms: 
+                testList.append(loaded_contextVectorList_sparse[i].toarray()[0])   
+            initialCentroids=preprocessing.normalize(gaac(testList, numberClusters), norm='l2')
+
+            #Calculate kmeans    
+            centroid, label = kmeans2(loaded_contextVectorList_sparse.toarray(),
+                                                            initialCentroids , 5, minit='matrix')
+
+        else:
+            #Calculate kmeans    
+            centroid, label = kmeans2(loaded_contextVectorList_sparse.toarray(),
+                                                            numberClusters , 5, minit='points')
 
     if outPathResults != "0":
         filename = os.path.splitext(os.path.basename(pathTestSentences))[0]
