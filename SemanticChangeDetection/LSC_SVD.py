@@ -24,7 +24,7 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_SVD.py c <pathCorpora> <pathSentences1> <pathSentences2> c <sentenceType> <clusteringInitialization> <limitAGL> 
+        LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> c <sentenceType> <clusteringInitialization> <limitAGL> 
         <limitCOS> <limitCluster> <windowSize>  
 
         LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <limitAGL> 
