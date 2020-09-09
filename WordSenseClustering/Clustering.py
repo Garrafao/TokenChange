@@ -37,7 +37,7 @@ def main():
        
         <pathVectors> = Path to the vectors
         <pathTestSentences> = Path to the test sentecens that contain the gold clustering, if no performance is needed set to 0
-	<outPathLabels> = Path to store the labels
+        <outPathLabels> = Path to store the labels
         <outPathResults> = path to store the performance in, if no performance is needed set to 0 
         <initializationType> = "gaac" for precalculated initialization, else random
         <numberClusters> = Number of desired clusters, if 0 than its calculated by sillhouette
@@ -52,13 +52,12 @@ def main():
     outPathLabels = args['<outPathLabels>']
     outPathResults = args['<outPathResults>']
     
-	
+
     if len(sys.argv) == 4:
-	pathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
-	outPathLabels = "Files/Clustering/cluster_labels.csv"
-	outPathResults = "Files/Clustering/cluster_scores.csv"
-	
-	
+        pathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
+        outPathLabels = "Files/Clustering/cluster_labels.csv"
+        outPathResults = "Files/Clustering/cluster_scores.csv"
+
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
     print("")
     start_time = time.time()  
@@ -70,7 +69,7 @@ def main():
 
     
     if pathTestSentences != "0":
-	#Get gold clustering if exists
+    #Get gold clustering if exists
         testSentences=[]
         gold=[]
         with open(pathTestSentences, 'r') as csvFile:
@@ -140,11 +139,11 @@ def main():
     with open(outPathLabels, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerows([label])    
-    logging.critical("Clustering end")  		
+    logging.critical("Clustering end") 
     logging.critical("--- %s seconds ---" % (time.time() - start_time))
     print("")
     
-	
+
 #Calculates and returns the accuracy for two lists of labels    
 def cluster_accuracy(y_true, y_pred):
     # compute confusion matrix
