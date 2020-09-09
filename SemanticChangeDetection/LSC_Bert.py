@@ -57,7 +57,7 @@ def main():
     limitCluster = int(args['<limitCluster>'])
     clustering = args['<clustering>']
 
-    if len(sys.argv) == 8:
+    if len(sys.argv) == 9:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         outPathLabels = "Files/Clustering/cluster_labels.csv"
         pathResults = "Files/LSC/lsc_scores.csv"
