@@ -28,6 +28,7 @@ def main():
     Usage:
         LSC_Bert.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <vecType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster>
         LSC_Bert.py  <pathSentences1> <pathSentences2> <vecType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster>
+        
     Arguments:
        
         <pathSentences1> = Path to the test sentences from time1
@@ -178,7 +179,7 @@ def main():
         writer = csv.writer(file)
         writer.writerows([cos, apd, cluster, cosBin, APDBin, clusterBin])    
     
-    logging.critical("Bert LSC end")  		
+    logging.critical("Bert LSC end")  
     logging.critical("--- %s seconds ---" % (time.time() - start_time))
     print("")
 
