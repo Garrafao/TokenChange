@@ -16,7 +16,7 @@ First download pre-trained word2vec (SGNS) type vectors, then sum up all type ve
 3. Pretrained token vectors from BERT:
 First download pre-trained BERT model, feed it with sentences and then extract token vectors. 
 
-After the creation of token vectors, they can be clustered into clusters of uses with similar meanings. This is done here by first choosing the number of clusters using the Silhouette index and then applying K-means with the calculated number of clusters. In order to improve the clustering performance, the initial centroids of K-means are precalculated by applying Group-Average-Agglomerative-Clustering on a sample of vectors.
+After the creation of token vectors, they can be clustered into clusters of uses with similar meanings. This is done here by first choosing the number of clusters using the Silhouette index and then applying K-means or Hierarchical Clustering with the calculated number of clusters. In order to improve the clustering performance of K-means, the initial centroids of K-means can be precalculated by applying Group-Average-Agglomerative-Clustering on a sample of vectors.
 
 The performance of the clustering can be measured by comparing the expected (human-annotated) clustering labels with the actual clustering labels using the Mean Adjusted Rand Index and Cluster Accuracy.
 
@@ -133,7 +133,7 @@ pip install -r requirements.txt
 
 ## Example word sense clustering
 
-The first set of methods is for creating token vectors and applying word sense clustering to the token vectors. The clustering performance scores will automatically be stored (mean adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the `WordSenseClustering/` folder.
+The first set of methods is for creating token vectors and applying word sense clustering (K-means) to the token vectors. The clustering performance scores will automatically be stored (mean adjusted rand index and cluster accuracy) into a file (`Files/Clustering/cluster_scores.csv`). All methods can be found in the `WordSenseClustering/` folder.
 
 
 ### Count-based: 
@@ -147,7 +147,7 @@ ipython WordSenseClustering/WordVectors.py Data/ccoha2.txt.gz svd
 ipython WordSenseClustering/CountBasedVectors.py Data/ccoha2.txt.gz Data/monetary.csv lemma 20 
 ```
 
-3) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
+3) Cluster the token vectors into two clusters, using GAAC + K-means and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
 ```python 
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans
 ```
@@ -160,7 +160,7 @@ ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans
 ipython WordSenseClustering/W2v.py Data/monetary.csv 20 lemma 
 ```
 
-2) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
+2) Cluster the token vectors into two clusters, using GAAC + K-means and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
 ```python
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans 
 ```
@@ -172,7 +172,7 @@ ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans
 ipython WordSenseClustering/Bert.py Data/monetary.csv lemma
 ```
 
-2) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
+2) Cluster the token vectors into two clusters, using GAAC + K-means and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
 ```python
 ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans
 ```
