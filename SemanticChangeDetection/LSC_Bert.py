@@ -57,7 +57,7 @@ def main():
     if len(sys.argv) == 8:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         outPathLabels = "Files/Clustering/cluster_labels.csv"
-        outPathResults = "Files/LSC/lsc_scores.csv"
+        pathResults = "Files/LSC/lsc_scores.csv"
        
     
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
