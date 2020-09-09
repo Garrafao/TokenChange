@@ -58,7 +58,7 @@ def main():
     if len(sys.argv) == 10:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         outPathLabels = "Files/Clustering/cluster_labels.csv"
-        outPathResults = "Files/LSC/lsc_scores.csv"
+        pathResults = "Files/LSC/lsc_scores.csv"
        
 
 
