@@ -26,7 +26,7 @@ def main():
     Usage:
         LSC_SVD.py c <pathCorpora> <pathSentences1> <pathSentences2> c <sentenceType> <clusteringInitialization> <limitAGL> 
         <limitCOS> <limitCluster> <windowSize>  
-	
+
         LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <limitAGL> 
         <limitCOS> <limitCluster> <windowSize>  
         
@@ -39,7 +39,7 @@ def main():
         <outPathVectors> = Path to store the vectors
         <outPathLabels> = Path to store the clustering labels
         <outPathResults> = Path to store the lsc scores	
-	<sentenceType> = "lemma" or "token"
+        <sentenceType> = "lemma" or "token"
         <clusteringInitialization> = "gaac" for precalculated initializations, else random
         <limitAGL> = Change score limit for AGL to still be consiered as change (Good is about 0.2)
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
@@ -65,16 +65,16 @@ def main():
     pathCorpora = args['<pathCorpora>']
     pathResults =  args['<pathResults>']
     sentenceType = args['<sentenceType>']
-	
-	
-	
+
+
+
     if len(sys.argv) == 10:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         outPathLabels = "Files/Clustering/cluster_labels.csv"
         outPathResults = "Files/LSC/lsc_scores.csv"
-	pathToMatrix = "Files/Vectors/FirstOrder/matrix.npz"
-	pathW2i = "Files/Vectors/FirstOrder/w2i.npz.npy"
-	
+        pathToMatrix = "Files/Vectors/FirstOrder/matrix.npz"
+        pathW2i = "Files/Vectors/FirstOrder/w2i.npz.npy"
+
 
 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.CRITICAL)
@@ -164,16 +164,16 @@ def main():
   
     filename1 = os.path.splitext(os.path.basename(pathSentences1))[0]
     filename2 = os.path.splitext(os.path.basename(pathSentences2))[0]
-					
+
     cos=[filename1, filename2, "cosineDistance",cosineDistance]
     apd=[filename1, filename2, "APD",APD]
     cluster=[filename1, filename2, "clusterScore", dist]
     cosBin=[filename1, filename2, "cosineDistanceBinary",cosineDistanceBinary[0]]
     APDBin=[filename1, filename2, "APDBinary",APDBinary[0]]
     clusterBin=[filename1, filename2, "clusterScoreBinary",clusterScoreBinary[0]]
-	
-	
-	
+
+
+
     print("Graded LSC:")
     print("")
     print("cosine distance:")
@@ -194,9 +194,9 @@ def main():
     print(APDBinary[0])
     print("JSD binary:")
     print(clusterScoreBinary[0])
-	
-	
-	
+
+
+
     with open(pathResults, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerows([cos, apd, cluster, cosBin, APDBin, clusterBin])    
