@@ -103,13 +103,18 @@ Note that if you want to create self-trained, count-based token vectors for non-
 
 The BERT model and the word2vec model can handle both, lemmatized and non-lemmatized test sentences, just by changing the parameter "lemma" to "token".
 
-The test sentences should be stored in a csv file with the following values for each sentence: 
+The test sentences should be stored in a .csv file with the following values for each sentence: 
 
 sentence: The lemmatized sentence. 
+
 target_index: The index of the target word in the sentence. 
+
 cluster: The expected cluster ID to which the word occurrence belongs.
+
 original_word: In case of lemmatization or pseudowords it is necessary to know what the original word was. 
+
 sentence_token: The non-lemmatized sentence.
+
 sentence_pos: For each word its part-of-speech.
 
 ## External packages
