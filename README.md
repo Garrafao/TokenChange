@@ -26,7 +26,7 @@ The performance of the clustering can be measured by comparing the expected (hum
 Three different comparison measures are used for finding graded LSC values:
 
 1. Average pairwise distance (APD): 
-Given two lists of token vectors (one for each period of time), where one vector represents one use of the word in this period. The APD chooses a sample of vectors from both times and measures their average pairwise cosine distance. A high average distance between the two times indicates a change in the usage of the word.
+Given two lists of token vectors (one for each period of time), where one vector represents one use of the word in this period. The APD chooses a sample of 200 vectors from both times and measures their average pairwise cosine distance. A high average distance between the two times indicates a change in the usage of the word.
 
 2. Cosine similarity (COS):
 The idea is to average all the vectors from both periods of time and then compare these two average vectors by using the cosine distance.  A high cosine distance between the two average vectors indicates a change in the usage of the word.
