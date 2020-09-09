@@ -23,7 +23,7 @@ def main():
 
     Usage:
         LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>
-        LSC_W2V.py  <pathSentences1> <pathSentences2> <outPathVectors> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
+        LSC_W2V.py  <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
     
     Arguments:
        
@@ -55,7 +55,7 @@ def main():
     windowSize = int(args['<windowSize>'])
     sentenceType = args['<sentenceType>']
 
-    if len(sys.argv) == 8:
+    if len(sys.argv) == 10:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         outPathLabels = "Files/Clustering/cluster_labels.csv"
         outPathResults = "Files/LSC/lsc_scores.csv"
