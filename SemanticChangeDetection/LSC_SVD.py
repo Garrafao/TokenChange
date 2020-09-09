@@ -24,9 +24,9 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_SVD.py <pathToMatrix> <pathW2i> <pathCorpora> <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <sentenceType> <clusteringInitialization> <limitAGL> 
+        LSC_SVD.py <pathToMatrix> <pathW2i> <pathCorpora> <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <sentenceType> <clusteringInitialization> <clustering> <limitAGL> 
         <limitCOS> <limitCluster> <windowSize>  
-        LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
+        LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <clustering> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
         
     Arguments:
         <pathToMatrix> = Path to the first order matrix
@@ -39,6 +39,7 @@ def main():
         <outPathResults> = Path to store the lsc scores	
         <sentenceType> = "lemma" or "token"
         <clusteringInitialization> = "gaac" for precalculated initializations, else random
+        <clustering> = "kmeans" or "hierarchical"
         <limitAGL> = Change score limit for AGL to still be consiered as change (Good is about 0.2)
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
         <limitCluster> = Minimum number of elements a cluster has to contain from one time and less from the other, to get assigned a change (Good is 5-10)
@@ -53,6 +54,7 @@ def main():
     outPathVectors = args['<outPathVectors>']
     outPathLabels = args['<outPathLabels>']
     clusteringInitialization = args['<clusteringInitialization>']
+    clustering = args['<clustering>']
     pathResults =  args['<outPathResults>']
     limitAGL = float(args['<limitAGL>'])
     limitCOS = float(args['<limitCOS>'])
@@ -120,7 +122,7 @@ def main():
     outSpace = Space(matrix = vectors, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
     #Cluster the combined vectors
-    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $outPathLabels 0 $clusteringInitialization 0')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $outPathLabels 0 $clusteringInitialization 0 $clustering')
     
     #Load list of labels
     labels=[]
