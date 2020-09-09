@@ -24,11 +24,9 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> c <sentenceType> <clusteringInitialization> <limitAGL> 
+        LSC_SVD.py <pathToMatrix> <pathW2i> <pathCorpora> <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <sentenceType> <clusteringInitialization> <limitAGL> 
         <limitCOS> <limitCluster> <windowSize>  
-
-        LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <limitAGL> 
-        <limitCOS> <limitCluster> <windowSize>  
+        LSC_SVD.py <pathCorpora> <pathSentences1> <pathSentences2> <sentenceType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster> <windowSize>  
         
     Arguments:
         <pathToMatrix> = Path to the first order matrix
@@ -55,7 +53,7 @@ def main():
     outPathVectors = args['<outPathVectors>']
     outPathLabels = args['<outPathLabels>']
     clusteringInitialization = args['<clusteringInitialization>']
-    pathResults =  args['<pathResults>']
+    pathResults =  args['<outPathResults>']
     limitAGL = float(args['<limitAGL>'])
     limitCOS = float(args['<limitCOS>'])
     limitCluster = int(args['<limitCluster>'])
@@ -63,7 +61,6 @@ def main():
     pathW2i = args['<pathW2i>']
     windowSize = int(args['<windowSize>'])
     pathCorpora = args['<pathCorpora>']
-    pathResults =  args['<pathResults>']
     sentenceType = args['<sentenceType>']
 
 
