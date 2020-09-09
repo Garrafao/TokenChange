@@ -149,7 +149,7 @@ ipython WordSenseClustering/CountBasedVectors.py Data/ccoha2.txt.gz Data/monetar
 
 3) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
 ```python 
-ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 
+ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans
 ```
 
 
@@ -162,7 +162,7 @@ ipython WordSenseClustering/W2v.py Data/monetary.csv 20 lemma
 
 2) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
 ```python
-ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
+ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans 
 ```
 
 ### BERT:
@@ -174,7 +174,7 @@ ipython WordSenseClustering/Bert.py Data/monetary.csv lemma
 
 2) Cluster the token vectors into two clusters, using GAAC for the cluster initialization and compare the result with the expected clustering, using the mean adjusted rand index and the cluster accuracy score. The performance scores and the actual clustering labels will automatically be stored in `Files/Clustering/cluster_scores.csv` and `Files/Clustering/cluster_labels.csv`. 
 ```python
-ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2  
+ipython WordSenseClustering/Clustering.py Data/monetary.csv gaac 2 kmeans
 ```
 
 
@@ -183,18 +183,18 @@ The scripts create token vectors for sentences from two time periods (based on t
 
 ### Count-based: 
 ```python
-ipython SemanticChangeDetection/LSC_SVD.py Data/ccoha2.txt.gz Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10 20 
+ipython SemanticChangeDetection/LSC_SVD.py Data/ccoha2.txt.gz Data/monetary.csv Data/monetary.csv lemma gaac kmeans 0.2 0.02 10 20 
 ```
 
 ### Word2vec:
 ```python
-ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10 20 
+ipython SemanticChangeDetection/LSC_W2V.py Data/monetary.csv Data/monetary.csv lemma gaac kmeans 0.2 0.02 10 20 
 ```
 
 
 ### BERT:
 ```python
-ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv lemma gaac 0.2 0.02 10
+ipython SemanticChangeDetection/LSC_Bert.py Data/monetary.csv Data/monetary.csv lemma gaac kmeans 0.2 0.02 10
 ```
 
 
