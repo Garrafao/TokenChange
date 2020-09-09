@@ -57,7 +57,7 @@ def main():
     windowSize = int(args['<windowSize>'])
     sentenceType = args['<sentenceType>']
 
-    if len(sys.argv) == 9:
+    if len(sys.argv) == 10:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
         outPathLabels = "Files/Clustering/cluster_labels.csv"
         pathResults = "Files/LSC/lsc_scores.csv"
