@@ -68,7 +68,7 @@ The usage of each script can be understood by running it with help option `-h`, 
 
 We recommend you to run the scripts within a [virtual environment](https://pypi.org/project/virtualenv/) with Python 3.8.5. 
 
-All scripts can be run in two different ways. The first is with all parameters, including all paths for storing the results and vectors, and the second is with only the essential parameters, where the locations are fixed. I recommend to use the shortened version (so will I do in the following examples), since it is much more understandable. In the shortened version the following locations are  used: 
+All scripts can be run in two different ways. The first is with all parameters, including all paths for storing the results and vectors, and the second is with only the essential parameters, where the locations are fixed. I recommend using the shortened version (so will I do in the following examples), since it is much more understandable. In the shortened version the following locations are  used: 
 
 For storing all cluster labels:
 `Files/Clustering/cluster_labels.csv`
@@ -99,7 +99,7 @@ the `Data/` folder will contain the lemmatized and non-lemmatized  [CCOHA2 & CCO
 
 In the following examples I will only use the lemmatized corpus and lemmatized test sentences. It is worth trying non-lemmatized test sentences, since in my thesis BERT has achieved better results using non-lemmatized sentences.
 
-Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, has to contain non-lemmatized sentences too! 
+Note that if you want to create self-trained, count-based token vectors for non-lemmatized sentences, the corpora on which the type vectors are trained on, must contain non-lemmatized sentences too! 
 
 The BERT model and the word2vec model can handle both, lemmatized and non-lemmatized test sentences, just by changing the parameter "lemma" to "token".
 
