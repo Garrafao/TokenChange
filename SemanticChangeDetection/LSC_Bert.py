@@ -26,8 +26,8 @@ def main():
     args = docopt("""
 
     Usage:
-        LSC_Bert.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <vecType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster>
-        LSC_Bert.py  <pathSentences1> <pathSentences2> <vecType> <clusteringInitialization> <limitAGL> <limitCOS> <limitCluster>
+        LSC_Bert.py  <pathSentences1> <pathSentences2> <outPathVectors> <outPathLabels> <outPathResults> <vecType> <clusteringInitialization> <clustering> <limitAGL> <limitCOS> <limitCluster>
+        LSC_Bert.py  <pathSentences1> <pathSentences2> <vecType> <clusteringInitialization> <clustering> <limitAGL> <limitCOS> <limitCluster>
         
     Arguments:
        
@@ -38,6 +38,7 @@ def main():
         <outPathResults> = Path to store the lsc scores
         <vecType> = Type of vector representation: "token" or "lemma"
         <clusteringInitialization> = "gaac" for precalculated initializations, else random
+        <clustering> = "kmeans" or "hierarchical"
         <limitAGL> = Change score limit for AGL to still be consiered as change (Good is about 0.2)
         <limitCOS> = Change score limit for Cosine to still be consiered as change (Good is about 0.02) 
         <limitCluster> = Minimum number of elements a cluster has to contain from one time and less from the other, to get assigned a change (Good is 5-10)
@@ -54,6 +55,7 @@ def main():
     limitAGL = float(args['<limitAGL>'])
     limitCOS = float(args['<limitCOS>'])
     limitCluster = int(args['<limitCluster>'])
+    clustering = args['<clustering>']
 
     if len(sys.argv) == 8:
         outPathVectors = "Files/Vectors/SecondOrder/Vectors.npz"
@@ -103,7 +105,7 @@ def main():
     outSpace = Space(matrix = vectors, rows=" ", columns=" ")
     outSpace.save(outPathVectors)
     #Cluster the combined vectors
-    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $outPathLabels 0 $clusteringInitialization 0')
+    get_ipython().run_line_magic('run', 'WordSenseClustering/Clustering.py $outPathVectors 0 $outPathLabels 0 $clusteringInitialization 0 $clustering')
     
    
     #Load list of labels
