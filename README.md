@@ -1,6 +1,6 @@
 # TokenChange
 
-Repository containing code for [this Bachelor Thesis](#bibtex) and for the DIACHR-ITA shared task submission[shared task paper](#bibtex) .
+Repository containing code for [this Bachelor Thesis](#bibtex) and for our DIACHR-ITA shared task submission [shared task submission](#bibtex).
 
 ## Contents
 
