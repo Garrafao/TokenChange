@@ -1,6 +1,6 @@
 # TokenChange
 
-Repository containing code for [this Bachelor Thesis](#bibtex).
+Repository containing code for [this Bachelor Thesis](#bibtex) and for the DIACHR-ITA shared task submission[shared task paper](#bibtex) .
 
 ## Contents
 
@@ -214,6 +214,20 @@ year={2020},
 school = {Institute for Natural Language Processing, University of Stuttgart},
 address = {Stuttgart}
 }
+
+@InProceedings{laicher-etal-2020-volente,
+author = {Laicher, Severin and Baldissin, Gioia and Castaneda, Enrique and Schlechtweg, Dominik and {Schulte im Walde}, Sabine},
+title = {{CL-IMS @ DIACR-Ita: Volente o Nolente: BERT does not outperform SGNS on Semantic Change Detection}},
+booktitle = {{Proceedings of the 7th evaluation campaign of Natural Language Processing and Speech tools for Italian (EVALITA 2020)}},
+editor = {Basile, Valerio and Croce, Danilo and Di Maro, Maria and Passaro, Lucia C.},
+year = {2020},
+publisher = {CEUR.org},
+address = {Online}
+}
+
+
+
+
 ```
 
 
